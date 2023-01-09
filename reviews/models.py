@@ -21,6 +21,7 @@ class Review(models.Model):
     description = models.CharField(max_length=300)
     review = models.CharField(max_length=300, unique=True)
     fav_character = models.CharField(max_length=200)
+    status = models.IntegerField(choices=STATUS, default=0)
     upvotes = models.ManyToManyField(
         User, related_name='review_upvote', blank=True)
     downvotes = models.ManyToManyField(
