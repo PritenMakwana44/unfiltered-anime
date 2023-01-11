@@ -86,22 +86,22 @@ body {
     z-index: 100;
 }
 
-.post-link {
+.review-link {
     text-decoration: none;
     color: #445261;
 }
 
-.post-link:hover,
+.review-link:hover,
 .page-link {
     color: #E84610;
 }
 
-.post-title {
+.review-title {
     margin-top: 20%;
     margin-left: 5%;
 }
 
-.post-subtitle {
+.review-subtitle {
     margin-left: 5%;
     color: lightgray;
 }

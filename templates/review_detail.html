@@ -7,12 +7,13 @@
                 <!-- review title goes in these h1 tags -->
                 <h1 class="review-title">{{ review.title }}</h1>
                 <!-- review author goes before the | the review's created date goes after -->
-                <p class="review-subtitle">{{ review.author }} | {{ review.created_on }}</p>
+                <p class="review-subtitle">{{ review.username }} | {{ review.publish_date }}</p>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
                 <!-- The featured image URL goes in the src attribute -->
                 {% if "placeholder" in review.featured_image.url %}
-                <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
+                {% load static %}
+                <img src="{% static 'default.jpg' %}" width="100%">
                 {% else %}
                 <img src=" {{ review.featured_image.url }}" width="100%">
                 {% endif %}
@@ -27,9 +28,30 @@
             <div class="card-body">
                 <!-- The review content goes inside the card-text. -->
                 <!-- Use the | safe filter inside the template tags -->
+                <h4>Description:</h4>
                 <p class="card-text ">
-                    {{ review.content | safe }}
+                    {{ review.description | safe }}
                 </p>
+                <h4>Type:</h4>
+                <p class="card-text ">
+                    {{ review.type | safe }}
+                </p>
+                <br>
+                <h4>Release Year:</h4>
+                <p class="card-text ">
+                    {{ review.release_year | safe }}
+                </p>
+                <br>
+                <h4>Review:</h4>
+                <p class="card-text ">
+                    {{ review.review | safe }}
+                </p>
+                <br>
+                <h4>Favourite Character:</h4>
+                <p class="card-text ">
+                    {{ review.fav_character | safe }}
+                </p>
+                
                 <div class="row">
 
                     <div class="col-1">
@@ -61,7 +83,7 @@
                 <div class="comments" style="padding: 10px;">
                     <p class="font-weight-bold">
                         <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
-                        {{ comment.name }}
+                        {{ comment.username }}
                         <span class=" text-muted font-weight-normal">
                             <!-- The comment's created date goes here -->
                             {{ comment.created_on }}
