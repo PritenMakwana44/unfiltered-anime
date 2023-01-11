@@ -8,7 +8,6 @@ ANIME_TYPE = [
     ('SHOW', 'Show')
 ]
 
-
 class Review(models.Model):
     review_id = models.AutoField(primary_key=True)
     username = models.ForeignKey(User, on_delete=models.CASCADE, related_name="Review_page")
