@@ -25,9 +25,9 @@
                                     <p class="username">Username: {{ review.username }}</p>
                                 </div>
                             </div>
-                            <a href="#" class="review-link">
+                            <a href="{% url 'review_detail' review.slug %}" class="review-link">
                                 <h2 class="class-title">{{ review.title }}</h2>
-                                <p class="card-text"{{ review.description }}
+                                <p class="card-text"{{ review.description }} 
                             </a>
                             <hr />
                             <p class="card-text text-muted h6">{{ review.publish_date }} <i 
