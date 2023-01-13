@@ -103,3 +103,5 @@ class ReviewDownVotes(View):
             review.downvotes.add(request.user)
         
         return HttpResponseRedirect(reverse('review_detail', args=[slug]))
+
+
