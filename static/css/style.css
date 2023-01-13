@@ -128,14 +128,27 @@ body {
     text-decoration: underline;
 }
 
-.btn-like {
+.btn-upvotes {
     color: #E84610;
     border: none;
     background: transparent;
 }
 
-.btn-like:hover,
-.btn-like:active {
+.btn-upvotes:hover,
+.btn-upvotes:active {
+    color: #E84610;
+    background: transparent;
+    border: none;
+}
+
+.btn-downvotes {
+    color: #E84610;
+    border: none;
+    background: transparent;
+}
+
+.btn-downvotes:hover,
+.btn-downvotes:active {
     color: #E84610;
     background: transparent;
     border: none;

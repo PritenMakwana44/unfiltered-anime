@@ -55,16 +55,40 @@
                 </p>
                 
                 <div class="row">
-
                     <div class="col-1">
-                        <!-- The number of likes goes before the closing strong tag -->
-                        <strong class="text-secondary"><i class="fa-sharp fa-solid fa-thumbs-up"></i> {{ review.number_of_upvotes }} </strong>
-                    
+                        <strong>
+                            {% if user.is_authenticated %}
+                            <form class="d-inline" action="{% url 'review_upvotes' review.slug %}" method="POST">
+                                {% csrf_token %}
+                                {% if upvoted %}
+                                <button type="submit" name="review_id" value="{{review.slug}}" class="btn-upvotes"><i class="fa-sharp fa-solid fa-thumbs-up"></i></button>
+                                {% else %}
+                                <button type="submit" name="review_id" value="{{review.slug}}" class="btn-upvotes"><i class="fa-regular fa-thumbs-up"></i></button>
+                                {% endif %}
+                            </form>
+                            {% else %}
+                            <span class="text-secondary"><i class="fa-regular fa-thumbs-up"></i></span>
+                            {% endif %}
+                        <span class="text-secondary"> {{ review.number_of_upvotes }} </span>
+                        </strong>
+                        
                     </div>
                     <div class="col-1">
-                        <!-- The number of likes goes before the closing strong tag -->
-                        <strong class="text-secondary"><i class="fa-sharp fa-solid fa-thumbs-down"></i> {{ review.number_of_downvotes }} </strong>
-                    
+                        <strong>
+                            {% if user.is_authenticated %}
+                            <form class="d-inline" action="{% url 'review_downvotes' review.slug %}" method="POST">
+                                {% csrf_token %}
+                                {% if upvoted %}
+                                <button type="submit" name="review_id" value="{{review.slug}}" class="btn-downvotes"><i class="fa-sharp fa-solid fa-thumbs-down"></i></button>
+                                {% else %}
+                                <button type="submit" name="review_id" value="{{review.slug}}" class="btn-downvotes"><i class="fa-regular fa-thumbs-down"></i></button>
+                                {% endif %}
+                            </form>
+                            {% else %}
+                            <span class="text-secondary"><i class="fa-regular fa-thumbs-down"></i></span>
+                            {% endif %}
+                        <span class="text-secondary"> {{ review.number_of_downvotes }} </span>
+                        </strong>
                     </div>
                     <div class="col-1">
                         {% with comments.count as total_comments %}

@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views import generic, View
+from django.http import HttpResponseRedirect
 from .models import Review
 from .forms import CommentForm
 
@@ -17,11 +18,12 @@ class ReviewDetail(View):
         review = get_object_or_404(queryset, slug=slug)
         comments = review.comments.filter(approved=True).order_by('comment_date')
         upvotes = False
-        #if review.upvotes.filter(id=self.request.user.id).exists():
-            #upvotes = True
         downvotes = False
-        #if review.upvote.filter(id=self.request.user.id).exists():
-            #downvotes = True
+        if review.upvotes.filter(id=self.request.user.id).exists():
+            upvotes = True
+        
+        if review.downvotes.filter(id=self.request.user.id).exists():
+            downvotes = True
         
         return render(
             request,
@@ -44,11 +46,13 @@ class ReviewDetail(View):
         review = get_object_or_404(queryset, slug=slug)
         comments = review.comments.filter(approved=True).order_by('comment_date')
         upvotes = False
-        #if review.upvotes.filter(id=self.request.user.id).exists():
-            #upvotes = True
         downvotes = False
-        #if review.upvote.filter(id=self.request.user.id).exists():
-            #downvotes = True
+        if review.upvotes.filter(id=self.request.user.id).exists():
+            upvotes = True
+            downvotes = False
+        if review.downvotes.filter(id=self.request.user.id).exists():
+            downvotes = True
+            upvotes = False
         
         comment_form = CommentForm(data=request.POST)
 
@@ -60,7 +64,6 @@ class ReviewDetail(View):
             return redirect('review_detail', review.slug)
         
         else:
-            # comment_form()
             return render(
                 request,
                 "review_detail.html",
@@ -70,9 +73,33 @@ class ReviewDetail(View):
                     "commented": True,
                     "upvotes": upvotes,
                     "downvotes": downvotes,
-                    # "comment_form": CommentForm(),
                     "comment_form": comment_form,
                 },
 
 
         )
+
+class ReviewUpvotes(View):
+
+    def post(self, request, slug):
+        review = get_object_or_404(Review, slug=slug)
+
+        if review.upvotes.filter(id=request.user.id).exists():
+            review.upvotes.remove(request.user)
+        else:
+            review.upvotes.add(request.user)
+        
+        return HttpResponseRedirect(reverse('review_detail', args=[slug]))
+
+
+class ReviewDownVotes(View):
+
+    def post(self, request, slug):
+        review = get_object_or_404(Review, slug=slug)
+
+        if review.downvotes.filter(id=request.user.id).exists():
+            review.downvotes.remove(request.user)
+        else:
+            review.downvotes.add(request.user)
+        
+        return HttpResponseRedirect(reverse('review_detail', args=[slug]))
