@@ -58,7 +58,13 @@
 
                     <div class="col-1">
                         <!-- The number of likes goes before the closing strong tag -->
-                        <strong class="text-secondary"><i class="far fa-heart"></i> {{ review.number_of_likes }} </strong>
+                        <strong class="text-secondary"><i class="fa-sharp fa-solid fa-thumbs-up"></i> {{ review.number_of_upvotes }} </strong>
+                    
+                    </div>
+                    <div class="col-1">
+                        <!-- The number of likes goes before the closing strong tag -->
+                        <strong class="text-secondary"><i class="fa-sharp fa-solid fa-thumbs-down"></i> {{ review.number_of_downvotes }} </strong>
+                    
                     </div>
                     <div class="col-1">
                         {% with comments.count as total_comments %}
