@@ -2,18 +2,6 @@
 
 {% load crispy_forms_tags %}
 
-
-<form method="POST" enctype="multipart/form-data">
- 
-    <!-- Security token -->
-    {% csrf_token %}
- 
-    <!-- Using the formset -->
-    {{ form|crispy }}
-    {{ form.media }}
-     
-    <input type="submit" value="Submit">
-</form>
+Hello world add review
 
 {% endblock content %}
-
