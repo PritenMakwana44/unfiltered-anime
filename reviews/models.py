@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
+
+
 STATUS = ((0, "Draft"), (1, "Published"))
 ANIME_TYPE = [
     ('FILM', 'Film'),
@@ -17,7 +19,7 @@ class Review(models.Model):
     featured_image = CloudinaryField('image', default='placeholder')
     release_year = models.PositiveSmallIntegerField()
     publish_date = models.DateTimeField(auto_now_add=True)
-    description = models.CharField(max_length=1000)
+    description = models.CharField(max_length=1000, default='Add description here')
     review = models.CharField(max_length=2000, unique=True)
     fav_character = models.CharField(max_length=300)
     status = models.IntegerField(choices=STATUS, default=0)
