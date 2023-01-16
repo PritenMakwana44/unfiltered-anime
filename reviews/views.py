@@ -1,16 +1,41 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views import generic, View
+from django.views.generic import (CreateView, UpdateView)
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect
 from .models import Review
 from .forms import CommentForm
+from .forms import ReviewForm
+from django_summernote.admin import SummernoteModelAdmin
+
 
 class ReviewList(generic.ListView):
     model = Review
     queryset = Review.objects.filter(status=1).order_by('-publish_date')
     template_name = 'index.html'
     paginate_by = 10
-    
+
+@login_required
+class AddReview(LoginRequiredMixin,SuccessMessageMixin,CreateView):
+    def add_review(request):
+        review_form = forms.ReviewForm()
+        if request.method =="POST":
+            review_form = forms.ReviewForm(request.POST)
+            if all([review_form.is_valid()]):
+                review_form.save()
+        context = {
+            'review_form': review_form
+        }
+        return render(request, 'add_review.html')
+
+
+
+
 class ReviewDetail(View):
+    model = Review
+    template_name = "review_detail.html"
+
 
     def get(self, request, slug, *args, **kwargs):
         queryset = Review.objects.filter(status=1)
@@ -26,7 +51,7 @@ class ReviewDetail(View):
         
         return render(
             request,
-            "review_detail.html",
+            reverse("review_detail", args=[slug]),
             {
                 "review": review,
                 "comments": comments,
@@ -35,7 +60,11 @@ class ReviewDetail(View):
                 "downvotes": downvotes,
                 "comment_form": CommentForm(),
             },
+
+
         )
+
+
     def post(self, request, slug, *args, **kwargs):
         queryset = Review.objects.filter(status=1)
         review = get_object_or_404(queryset, slug=slug)
@@ -50,6 +79,7 @@ class ReviewDetail(View):
             upvotes = False
         
         comment_form = CommentForm(data=request.POST)
+
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
             comment.username = request.user
@@ -60,7 +90,7 @@ class ReviewDetail(View):
         else:
             return render(
                 request,
-                "review_detail.html",
+                reverse("review_detail", args=[slug]),
                 {
                     "review": review,
                     "comments": comments,
@@ -69,26 +99,28 @@ class ReviewDetail(View):
                     "downvotes": downvotes,
                     "comment_form": comment_form,
                 },
-
-
-        )
-
+                )
 class ReviewUpvotes(View):
+
     def post(self, request, slug):
         review = get_object_or_404(Review, slug=slug)
+
         if review.upvotes.filter(id=request.user.id).exists():
             review.upvotes.remove(request.user)
         else:
             review.upvotes.add(request.user)
         
         return HttpResponseRedirect(reverse('review_detail', args=[slug]))
-        
+
+
 class ReviewDownVotes(View):
+
     def post(self, request, slug):
         review = get_object_or_404(Review, slug=slug)
+
         if review.downvotes.filter(id=request.user.id).exists():
             review.downvotes.remove(request.user)
         else:
             review.downvotes.add(request.user)
-
+        
         return HttpResponseRedirect(reverse('review_detail', args=[slug]))
