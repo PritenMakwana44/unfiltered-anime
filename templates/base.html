@@ -38,7 +38,11 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
+<<<<<<< HEAD
                         <a class="nav-link" href="{% url 'add_review' %}">Logout</a>
+=======
+                        <a class="nav-link" href="{% url 'add_review' %}">Add Review</a>
+>>>>>>> parent of c576f6a (Revert "add review working without username and submit. Commit before changing to form.py function for add review")
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>

@@ -1,29 +1,15 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views import generic, View
-from django.views.generic import (CreateView, UpdateView)
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect
 from .models import Review
 from .forms import CommentForm
-from .forms import ReviewForm
-from django_summernote.admin import SummernoteModelAdmin
 
 class ReviewList(generic.ListView):
     model = Review
     queryset = Review.objects.filter(status=1).order_by('-publish_date')
     template_name = 'index.html'
     paginate_by = 10
-
-class AddReview(LoginRequiredMixin,SuccessMessageMixin,CreateView):
-    form_class = ReviewForm
-    model = Review
-    template_name = 'add_review.html'
-    success_message = 'Added Review!'
-
-    def get_success_url(self):
-        return reverse('add_review')
-
+    
 class ReviewDetail(View):
 
     def get(self, request, slug, *args, **kwargs):
@@ -83,7 +69,10 @@ class ReviewDetail(View):
                     "downvotes": downvotes,
                     "comment_form": comment_form,
                 },
+
+
         )
+
 class ReviewUpvotes(View):
     def post(self, request, slug):
         review = get_object_or_404(Review, slug=slug)
@@ -103,5 +92,3 @@ class ReviewDownVotes(View):
             review.downvotes.add(request.user)
 
         return HttpResponseRedirect(reverse('review_detail', args=[slug]))
-
-
