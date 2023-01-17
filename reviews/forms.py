@@ -13,9 +13,7 @@ class CommentForm(forms.ModelForm):
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
-        fields = '__all__'
-        prepopulated_fields = {'slug': ('title',)}
-        exclude = ('upvotes', 'downvotes',)
+        fields = ('title', 'type', 'review', 'description', 'release_year', 'fav_character', 'status')
         widgets = {
             'description': SummernoteWidget(),
             'review': SummernoteWidget()

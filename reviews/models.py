@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.utils.text import slugify
 
 
 
@@ -28,6 +29,10 @@ class Review(models.Model):
     downvotes = models.ManyToManyField(
         User, related_name='review_downvote', blank=True)
 
+    # def save(self, *args, **kwargs):
+    #     self.slug = slugify(self.slug)
+    #     super(Review, self).save(*args, **kwargs)
+
     class Meta:
         ordering = ['-publish_date']
 
@@ -39,6 +44,11 @@ class Review(models.Model):
 
     def number_of_downvotes(self):
         return self.downvotes.count()
+    
+    def save(self, *args, **kwargs): # new
+        if not self.slug:
+            self.slug = slugify(self.title)
+        return super().save(*args, **kwargs)
 
 
 class Comments(models.Model):

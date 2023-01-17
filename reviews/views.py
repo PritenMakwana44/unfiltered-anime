@@ -8,6 +8,7 @@ from .models import Review
 from .forms import CommentForm
 from .forms import ReviewForm
 from django_summernote.admin import SummernoteModelAdmin
+from django.urls import reverse_lazy
 
 
 class ReviewList(generic.ListView):
@@ -19,19 +20,25 @@ class ReviewList(generic.ListView):
 class AddReview(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     form_class = ReviewForm
     template_name = 'add_review.html'
-    success_url = 'index.html'
+    success_url = reverse_lazy('reviews:home')
+
+    def form_valid(self, form):
+        print('USER: ', self.request.user)
+        form.instance.username = self.request.user
+        return super().form_valid(form)
+        #return super(Review, self).form_valid(form)
     
-    def add_review(request):
-        review_form = forms.ReviewForm()
-        if request.method == "POST":
-            review_form = forms.ReviewForm(request.POST)
-            if all([review_form.is_valid()]):
-                review_form.save()
+    # def add_review(request):
+    #     review_form = forms.ReviewForm()
+    #     if request.method == "POST":
+    #         review_form = forms.ReviewForm(request.POST)
+    #         if all([review_form.is_valid()]):
+    #             review_form.save()
         
-        context = {
-            'review_form': review_form
-        }
-        return render(request, 'add_review.html',context)
+    #     context = {
+    #         'review_form': review_form
+    #     }
+    #     return render(request, 'add_review.html',context)
 
 
 
