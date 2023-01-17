@@ -49,7 +49,7 @@ class ReviewDetail(View):
         
         return render(
             request,
-            reverse("review_detail", args=[slug]),
+            "review_detail.html",
         
             {
                 "review": review,
@@ -89,7 +89,7 @@ class ReviewDetail(View):
         else:
             return render(
                 request,
-                reverse("review_detail", args=[slug]),
+                "review_detail.html",
                 {
                     "review": review,
                     "comments": comments,
