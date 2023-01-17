@@ -8,7 +8,7 @@ class ReviewAdmin(SummernoteModelAdmin):
     list_filter = ('status', 'publish_date',) # may not need
     list_display = ('title', 'slug', 'status', 'publish_date') # may not need
     search_fields = ['title', 'content'] # May not need
-    prepopulated_fields = {'slug': ('title',)} # May not need
+    prepopulated_fields = {'slug': ('title',)} #
     summernote_fields = ('description', 'review', 'body')
 
 @admin.register(Comments)

@@ -14,7 +14,8 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = '__all__'
-        exclude = ('slug','upvotes', 'downvotes',)
+        prepopulated_fields = {'slug': ('title',)}
+        exclude = ('upvotes', 'downvotes',)
         widgets = {
             'description': SummernoteWidget(),
             'review': SummernoteWidget()

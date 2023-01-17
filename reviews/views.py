@@ -16,18 +16,22 @@ class ReviewList(generic.ListView):
     template_name = 'index.html'
     paginate_by = 10
 
-@login_required
-class AddReview(LoginRequiredMixin,SuccessMessageMixin,CreateView):
+class AddReview(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    form_class = ReviewForm
+    template_name = 'add_review.html'
+    success_url = 'index.html'
+    
     def add_review(request):
         review_form = forms.ReviewForm()
-        if request.method =="POST":
+        if request.method == "POST":
             review_form = forms.ReviewForm(request.POST)
             if all([review_form.is_valid()]):
                 review_form.save()
+        
         context = {
             'review_form': review_form
         }
-        return render(request, 'add_review.html')
+        return render(request, 'add_review.html',context)
 
 
 
