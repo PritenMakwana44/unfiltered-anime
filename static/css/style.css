@@ -29,10 +29,11 @@ body {
     background-color: #F9FAFC;
 }
 
-.card {
+/*.card {
     border: none;
     background-color: transparent;
 }
+*/
 
 .image-container {
     position: relative;
@@ -57,7 +58,7 @@ body {
     overflow: hidden;
     position: relative;
     display: inline-block;
-    height: 33vh;
+    height: 5%;
     width: 100%;
 }
 
