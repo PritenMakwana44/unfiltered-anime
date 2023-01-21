@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views import generic, View
 from django.views.generic import (CreateView, UpdateView)
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect
 from .models import Review
@@ -123,3 +124,35 @@ class ReviewDownVotes(View):
             review.downvotes.add(request.user)
         
         return HttpResponseRedirect(reverse('review_detail', args=[slug]))
+
+"""
+@login_required
+def ReviewEdit(request, slug):
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only logged in users can edit')
+    return redirect(reverse_lazy('home'))
+
+    review = get_object_or_404(Review, slug=slug)
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated product!')
+            return redirect(reverse('review_detail', args=[slug]))
+        else:
+            messages.error(request,
+                           ('Failed to update product. '
+                            'Please ensure the form is valid.'))
+    else:
+        form = ReviewForm(instance=review)
+        messages.info(request, f'You are editing {review.title}')
+
+    template = 'templates/edit_review.html'
+    context = {
+        'form': form,
+        'review': review,
+    }
+
+    return render(request, template, context)
+"""
+
