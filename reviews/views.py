@@ -102,11 +102,15 @@ class ReviewDetail(View):
                     "comment_form": comment_form,
                 },
                 )
+
+
+
 class ReviewUpvotes(View):
 
     def post(self, request, slug):
         review = get_object_or_404(Review, slug=slug)
-
+        if review.downvotes.filter(id=request.user.id).exists():
+            review.downvotes.remove(request.user)
         if review.upvotes.filter(id=request.user.id).exists():
             review.upvotes.remove(request.user)
         else:
@@ -114,12 +118,12 @@ class ReviewUpvotes(View):
         
         return HttpResponseRedirect(reverse('review_detail', args=[slug]))
 
-
 class ReviewDownVotes(View):
 
     def post(self, request, slug):
         review = get_object_or_404(Review, slug=slug)
-
+        if review.upvotes.filter(id=request.user.id).exists():
+            review.upvotes.remove(request.user)
         if review.downvotes.filter(id=request.user.id).exists():
             review.downvotes.remove(request.user)
         else:
@@ -127,39 +131,6 @@ class ReviewDownVotes(View):
         
         return HttpResponseRedirect(reverse('review_detail', args=[slug]))
 
-"""
-@login_required
-def review_edit(request, slug):
-    #if request.user.is_authenticated:
-     #   messages.error(request, 'Sorry, only logged in users can edit')
-   # return redirect(reverse_lazy('home'))
-
-    review = get_object_or_404(Review, slug=slug)
-    if request.method == 'POST':
-        form = ReviewForm(request.POST, request.FILES, instance=Review)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Successfully updated!')
-            return redirect(reverse('review_detail', args=[slug]))
-        else:
-            messages.error(request,
-                           ('Failed to update. '
-                            'Please ensure the form is valid.'))
-    else:
-        form = ReviewForm(instance=review)
-        messages.info(request, f'You are editing {review.title}')
-
-    template = 'edit_review.html'
-    context = {
-        'form': form,
-        'review': review,
-    }
-
-    return render(request, template, context)
-
-
-
-"""
 
 @login_required
 def review_edit(request, slug):

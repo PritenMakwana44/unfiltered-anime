@@ -95,15 +95,7 @@
                             <span class="text-secondary"> {{ review.number_of_downvotes }} </span>
                         </strong>
                     </div>
-                
-
-
-
-
-
-
-
-
+            
 
                     <div class="col-1">
                         {% with comments.count as total_comments %}
@@ -123,7 +115,6 @@
                             <a href="{% url 'review_delete' review.slug %}"><button type="button" class="btn btn-primary">Delete Review</button></a>
                             {% endif %}
                              </div>
-                          
                           
                     
                 </div>
