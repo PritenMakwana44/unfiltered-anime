@@ -10,6 +10,8 @@ from .forms import CommentForm
 from .forms import ReviewForm
 from django_summernote.admin import SummernoteModelAdmin
 from django.urls import reverse_lazy
+from django.contrib import messages
+
 
 
 class ReviewList(generic.ListView):
@@ -127,32 +129,59 @@ class ReviewDownVotes(View):
 
 """
 @login_required
-def ReviewEdit(request, slug):
-    if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only logged in users can edit')
-    return redirect(reverse_lazy('home'))
+def review_edit(request, slug):
+    #if request.user.is_authenticated:
+     #   messages.error(request, 'Sorry, only logged in users can edit')
+   # return redirect(reverse_lazy('home'))
 
     review = get_object_or_404(Review, slug=slug)
     if request.method == 'POST':
-        form = ReviewForm(request.POST, request.FILES, instance=product)
+        form = ReviewForm(request.POST, request.FILES, instance=Review)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Successfully updated product!')
+            messages.success(request, 'Successfully updated!')
             return redirect(reverse('review_detail', args=[slug]))
         else:
             messages.error(request,
-                           ('Failed to update product. '
+                           ('Failed to update. '
                             'Please ensure the form is valid.'))
     else:
         form = ReviewForm(instance=review)
         messages.info(request, f'You are editing {review.title}')
 
-    template = 'templates/edit_review.html'
+    template = 'edit_review.html'
     context = {
         'form': form,
         'review': review,
     }
 
     return render(request, template, context)
+
+
+
 """
 
+@login_required
+def review_edit(request, slug):
+    review = get_object_or_404(Review, slug=slug)
+    if request.user != review.username:
+        messages.error(request, 'Sorry, only the author can edit this review')
+        return redirect(reverse_lazy('home'))
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, request.FILES, instance=review)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated!')
+            return redirect(reverse('review_detail', args=[slug]))
+        else:
+            messages.error(request, ('Failed to update. ' 'Please ensure the form is valid.'))
+    else:
+        form = ReviewForm(instance=review)
+        messages.info(request, f'You are editing {review.title}')
+        template = 'edit_review.html'
+        context = {
+            'form': form,
+            'review': review,
+        }
+        return render(request, template, context)

@@ -27,6 +27,7 @@
 <div class="container">
     <div class="row">
         <div class="col card mb-4  mt-3 left  top">
+
             <div class="card-body">
                 <!-- The review content goes inside the card-text. -->
                 <!-- Use the | safe filter inside the template tags -->
@@ -53,7 +54,7 @@
                 <p class="card-text ">
                     {{ review.fav_character | safe }}
                 </p>
-                
+
                 <div class="row">
                     <div class="col-1">
                         <strong>
@@ -61,17 +62,19 @@
                             <form class="d-inline" action="{% url 'review_upvotes' review.slug %}" method="POST">
                                 {% csrf_token %}
                                 {% if upvoted %}
-                                <button type="submit" name="review_id" value="{{review.slug}}" class="btn-upvotes"><i class="fa-sharp fa-solid fa-thumbs-up"></i></button>
+                                <button type="submit" name="review_id" value="{{review.slug}}" class="btn-upvotes"><i
+                                        class="fa-sharp fa-solid fa-thumbs-up"></i></button>
                                 {% else %}
-                                <button type="submit" name="review_id" value="{{review.slug}}" class="btn-upvotes"><i class="fa-regular fa-thumbs-up"></i></button>
+                                <button type="submit" name="review_id" value="{{review.slug}}" class="btn-upvotes"><i
+                                        class="fa-regular fa-thumbs-up"></i></button>
                                 {% endif %}
                             </form>
                             {% else %}
                             <span class="text-secondary"><i class="fa-regular fa-thumbs-up"></i></span>
                             {% endif %}
-                        <span class="text-secondary"> {{ review.number_of_upvotes }} </span>
+                            <span class="text-secondary"> {{ review.number_of_upvotes }} </span>
                         </strong>
-                        
+
                     </div>
                     <div class="col-1">
                         <strong>
@@ -79,17 +82,29 @@
                             <form class="d-inline" action="{% url 'review_downvotes' review.slug %}" method="POST">
                                 {% csrf_token %}
                                 {% if upvoted %}
-                                <button type="submit" name="review_id" value="{{review.slug}}" class="btn-downvotes"><i class="fa-sharp fa-solid fa-thumbs-down"></i></button>
+                                <button type="submit" name="review_id" value="{{review.slug}}" class="btn-downvotes"><i
+                                        class="fa-sharp fa-solid fa-thumbs-down"></i></button>
                                 {% else %}
-                                <button type="submit" name="review_id" value="{{review.slug}}" class="btn-downvotes"><i class="fa-regular fa-thumbs-down"></i></button>
+                                <button type="submit" name="review_id" value="{{review.slug}}" class="btn-downvotes"><i
+                                        class="fa-regular fa-thumbs-down"></i></button>
                                 {% endif %}
                             </form>
                             {% else %}
                             <span class="text-secondary"><i class="fa-regular fa-thumbs-down"></i></span>
                             {% endif %}
-                        <span class="text-secondary"> {{ review.number_of_downvotes }} </span>
+                            <span class="text-secondary"> {{ review.number_of_downvotes }} </span>
                         </strong>
                     </div>
+                
+
+
+
+
+
+
+
+
+
                     <div class="col-1">
                         {% with comments.count as total_comments %}
                         <strong class="text-secondary"><i class="far fa-comments"></i>
@@ -97,6 +112,13 @@
                             {{ total_comments }}</strong>
                         {% endwith %}
                     </div>
+                    
+                    <div class="row mt-4">
+                        {% if request.user == review.username %}
+                        <a href="{% url 'edit_review' review.slug %}"><button type="button" class="btn btn-primary">Edit Review</button></a>
+                        {% endif %}
+                         </div>
+                    
                 </div>
             </div>
         </div>
@@ -106,6 +128,8 @@
             <hr>
         </div>
     </div>
+
+
     <div class="row">
         <div class="col-md-8 card mb-4  mt-3 ">
             <h3>Comments:</h3>
