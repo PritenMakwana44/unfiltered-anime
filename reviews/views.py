@@ -185,3 +185,13 @@ def review_edit(request, slug):
             'review': review,
         }
         return render(request, template, context)
+
+@login_required
+def delete_review(request, slug):
+    review = get_object_or_404(Review, slug=slug)
+    if request.user != review.username:
+        messages.error(request, "You are not authorized to delete this review.")
+        return redirect('review_detail', review.slug)
+    review.delete()
+    messages.success(request, "Review deleted successfully.")
+    return redirect('home')

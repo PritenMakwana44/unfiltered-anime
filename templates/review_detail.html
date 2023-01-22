@@ -118,6 +118,13 @@
                         <a href="{% url 'edit_review' review.slug %}"><button type="button" class="btn btn-primary">Edit Review</button></a>
                         {% endif %}
                          </div>
+                         <div class="row mt-4">
+                            {% if request.user == review.username %}
+                            <a href="{% url 'review_delete' review.slug %}"><button type="button" class="btn btn-primary">Delete Review</button></a>
+                            {% endif %}
+                             </div>
+                          
+                          
                     
                 </div>
             </div>
