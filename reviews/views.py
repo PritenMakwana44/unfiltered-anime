@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect
 from .models import Review
+from .models import WatchLater
 from .forms import CommentForm
 from .forms import ReviewForm
 from django_summernote.admin import SummernoteModelAdmin
@@ -166,3 +167,26 @@ def delete_review(request, slug):
     review.delete()
     messages.success(request, "Review deleted successfully.")
     return redirect('home')
+
+
+@login_required
+def add_to_watch_later(request, review_id):
+    if request.user.is_authenticated:
+        watch_later = Review(username=request.user, review_id=review_id)
+        watch_later.save()
+        return redirect('home')
+    else:
+        return redirect('login')
+
+def watch_later_detail(request, watch_id):
+    watch_later = WatchLater.objects.get(watch_id=watch_id)
+    return render(request, 'watch_later/detail.html', {'watch_later': watch_later})
+
+def watch_later_list(request):
+    watch_later_list = WatchLater.objects.filter(username=request.user)
+    return render(request, 'watch_later/list.html', {'watch_later_list': watch_later_list})
+
+@login_required
+def remove_from_watch_later(request, watch_id):
+    WatchLater.objects.filter(watch_id=watch_id).delete()
+    return redirect('watch_later_list')
