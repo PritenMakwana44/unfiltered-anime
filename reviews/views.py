@@ -12,6 +12,7 @@ from .forms import ReviewForm
 from django_summernote.admin import SummernoteModelAdmin
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 
 
@@ -172,21 +173,22 @@ def delete_review(request, slug):
 @login_required
 def add_to_watch_later(request, review_id):
     if request.user.is_authenticated:
-        watch_later = Review(username=request.user, review_id=review_id)
+        watch_later = WatchLater()
+        watch_later.review_id = Review.objects.get(review_id=review_id)
+        watch_later.username = User.objects.get(username=request.user.username)
         watch_later.save()
         return redirect('home')
     else:
         return redirect('login')
 
-def watch_later_detail(request, watch_id):
-    watch_later = WatchLater.objects.get(watch_id=watch_id)
-    return render(request, 'watch_later/detail.html', {'watch_later': watch_later})
 
 def watch_later_list(request):
     watch_later_list = WatchLater.objects.filter(username=request.user)
-    return render(request, 'watch_later/list.html', {'watch_later_list': watch_later_list})
+    return render(request, 'watch_later/watch_later_list.html', {'watch_later_list': watch_later_list})
 
+"""
 @login_required
 def remove_from_watch_later(request, watch_id):
     WatchLater.objects.filter(watch_id=watch_id).delete()
     return redirect('watch_later_list')
+"""
