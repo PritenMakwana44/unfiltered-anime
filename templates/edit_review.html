@@ -12,9 +12,11 @@
             {{ field }}
         {% endif %}
     {% endfor %}
+
+    <hr>
     <div class="text-right">
-        <a class="btn btn-outline-black rounded-0" href="{% url 'home' %}">Cancel</a>
-        <button class="btn btn-black rounded-0" type="submit">Update Review</button>
+        <button href="{% url 'home' %}">Cancel</button>
+        <button type="submit">Update Review</button>
     </div>
 </form>
 

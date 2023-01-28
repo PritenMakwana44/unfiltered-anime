@@ -4,6 +4,41 @@ body {
 
 }
 
+button {
+    display: inline-block;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    padding: 0 24px;
+    border-radius: 50px;
+    min-width: 200px;
+    height: 50px;
+    font-size: 18px;
+    background-color: orange;
+    font-weight: 500;
+    color: #222;
+
+
+}
+
+
+button:hover {
+    display: inline-block;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    padding: 0 24px;
+    border-radius: 50px;
+    min-width: 200px;
+    height: 50px;
+    font-size: 18px;
+    background-color: grey;
+    font-weight: 500;
+    color: #222;
+
+
+}
+
 .display-4 {
     text-align: center;
 }
@@ -99,36 +134,37 @@ hr {
     border: none;
 }
 
-button {
-    display: inline-block;
-    outline: 0;
-    border: none;
-    cursor: pointer;
-    padding: 0 24px;
-    border-radius: 50px;
-    min-width: 200px;
-    height: 50px;
-    font-size: 18px;
-    background-color: orange;
-    font-weight: 500;
-    color: #222;
 
+.textinput {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 50%;
 
 }
 
-button:hover {
-    display: inline-block;
-    outline: 0;
-    border: none;
-    cursor: pointer;
-    padding: 0 24px;
-    border-radius: 50px;
-    min-width: 200px;
-    height: 50px;
-    font-size: 18px;
-    background-color: grey;
-    font-weight: 500;
-    color: #222;
+.form-control {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 50%;
 
+}
+
+.rev-det-1 {
+    margin: 0;
+    padding: 0;
+    border: none;
+    letter-spacing: -50px;
+
+}
+
+
+
+.rev-det-3{
+    margin: 0;
+    padding: 0;
+    border: none;
+    letter-spacing: -50px;
 
 }

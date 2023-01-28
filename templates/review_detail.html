@@ -55,123 +55,115 @@
                     {{ review.fav_character | safe }}
                 </p>
 
-                <div class="row">
-                    <div class="col-1">
-                        <strong>
-                            {% if user.is_authenticated %}
-                            <form class="d-inline" action="{% url 'review_upvotes' review.slug %}" method="POST">
-                                {% csrf_token %}
-                                {% if upvoted %}
-                                <button type="submit" name="review_id" value="{{review.slug}}" class="btn-upvotes"><i
-                                        class="fa-sharp fa-solid fa-thumbs-up"></i></button>
-                                {% else %}
-                                <button type="submit" name="review_id" value="{{review.slug}}" class="btn-upvotes"><i
-                                        class="fa-regular fa-thumbs-up"></i></button>
-                                {% endif %}
-                            </form>
-                            {% else %}
-                            <span class="text-secondary"><i class="fa-regular fa-thumbs-up"></i></span>
-                            {% endif %}
-                            <span class="text-secondary"> {{ review.number_of_upvotes }} </span>
-                        </strong>
-
-                    </div>
-                    <div class="col-1">
-                        <strong>
-                            {% if user.is_authenticated %}
-                            <form class="d-inline" action="{% url 'review_downvotes' review.slug %}" method="POST">
-                                {% csrf_token %}
-                                {% if upvoted %}
-                                <button type="submit" name="review_id" value="{{review.slug}}" class="btn-downvotes"><i
-                                        class="fa-sharp fa-solid fa-thumbs-down"></i></button>
-                                {% else %}
-                                <button type="submit" name="review_id" value="{{review.slug}}" class="btn-downvotes"><i
-                                        class="fa-regular fa-thumbs-down"></i></button>
-                                {% endif %}
-                            </form>
-                            {% else %}
-                            <span class="text-secondary"><i class="fa-regular fa-thumbs-down"></i></span>
-                            {% endif %}
-                            <span class="text-secondary"> {{ review.number_of_downvotes }} </span>
-                        </strong>
-                    </div>
-
-
-                    <div class="col-1">
-                        {% with comments.count as total_comments %}
-                        <strong class="text-secondary"><i class="far fa-comments"></i>
-                            <!-- Our total_comments variable goes before the closing strong tag -->
-                            {{ total_comments }}</strong>
-                        {% endwith %}
-                    </div>
-
-                    <div class="row mt-4">
-                        {% if request.user == review.username %}
-                        <a href="{% url 'edit_review' review.slug %}"><button type="button" class="btn btn-primary">Edit
-                                Review</button></a>
+            <span class="rev-det-1">
+                <strong>
+                    {% if user.is_authenticated %}
+                    <form class="d-inline" action="{% url 'review_upvotes' review.slug %}" method="POST">
+                        {% csrf_token %}
+                        {% if upvoted %}
+                        <button type="submit" name="review_id" value="{{review.slug}}" class="btn-upvotes"><i
+                                class="fa-sharp fa-solid fa-thumbs-up"></i></button>
+                        {% else %}
+                        <button type="submit" name="review_id" value="{{review.slug}}" class="btn-upvotes"><i
+                                class="fa-regular fa-thumbs-up"></i></button>
                         {% endif %}
-                    </div>
-                    <div class="row mt-4">
-                        {% if request.user == review.username %}
-                        <a href="{% url 'review_delete' review.slug %}"><button type="button"
-                                class="btn btn-primary">Delete Review</button></a>
-                        {% endif %}
-                    </div>
+                    </form>
+                    {% else %}
+                    <span class="text-secondary"><i class="fa-regular fa-thumbs-up"></i></span>
+                    {% endif %}
+                    <span> {{ review.number_of_upvotes }} </span>
+                </strong>
 
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <hr>
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div class="col-md-8 card mb-4  mt-3 ">
-            <h3>Comments:</h3>
-            <div class="card-body">
-                <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
-                {% for comment in comments %}
-                <div class="comments" style="padding: 10px;">
-                    <p class="font-weight-bold">
-                        <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
-                        {{ comment.username }}
-                        <span class=" text-muted font-weight-normal">
-                            <!-- The comment's created date goes here -->
-                            {{ comment.created_on }}
-                        </span> wrote:
-                    </p>
-                    <!-- The body of the comment goes before the | -->
-                    {{ comment.body | linebreaks }}
-                </div>
-                <!-- Our for loop ends here -->
-                {% endfor %}
-            </div>
-        </div>
-        <div class="col-md-4 card mb-4  mt-3 ">
-            <div class="card-body">
-                {% if commented %}
-                <div class="alert alert-success" role="alert">
-                    Your comment is awaiting approval
-                </div>
-                {% else %}
+            </span>
+            <br>
+            <span class="rev-det-3">
+                <strong>
                 {% if user.is_authenticated %}
-
-                <h3>Leave a comment:</h3>
-                <p>Posting as: {{ user.username }}</p>
-                <form method="post" style="margin-top: 1.3em;">
-                    {{ comment_form | crispy }}
+                <form class="d-inline" action="{% url 'review_downvotes' review.slug %}" method="POST">
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                    {% if upvoted %}
+                    <button type="submit" name="review_id" value="{{review.slug}}" class="btn-downvotes"><i
+                            class="fa-sharp fa-solid fa-thumbs-down"></i></button>
+                    {% else %}
+                    <button type="submit" name="review_id" value="{{review.slug}}" class="btn-downvotes"><i
+                            class="fa-regular fa-thumbs-down"></i></button>
+                    {% endif %}
                 </form>
+                {% else %}
+                <span><i class="fa-regular fa-thumbs-down"></i></span>
                 {% endif %}
-                {% endif %}
+                <span> {{ review.number_of_downvotes }} </span>
+                </strong>
+
+            </span>
+
+
+                <div class="row mt-4">
+                    {% if request.user == review.username %}
+                    <a href="{% url 'edit_review' review.slug %}"><button type="button">Edit
+                            Review</button></a>
+                    {% endif %}
+                </div>
+                <div class="row mt-4">
+                    {% if request.user == review.username %}
+                    <a href="{% url 'review_delete' review.slug %}"><button type="button">Delete Review</button></a>
+                    {% endif %}
+                </div>
+
             </div>
         </div>
     </div>
+</div>
+<div class="row">
+    <div class="col">
+        <hr>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-8 card mb-4  mt-3 ">
+        <h3>Comments:</h3>
+        <div class="card-body">
+            <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
+            {% for comment in comments %}
+            <div class="comments" style="padding: 10px;">
+                <p class="font-weight-bold">
+                    <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
+                    {{ comment.username }}
+                    <span class=" text-muted font-weight-normal">
+                        <!-- The comment's created date goes here -->
+                        {{ comment.created_on }}
+                    </span> wrote:
+                </p>
+                <!-- The body of the comment goes before the | -->
+                {{ comment.body | linebreaks }}
+            </div>
+            <!-- Our for loop ends here -->
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-md-4 card mb-4  mt-3 ">
+        <div class="card-body">
+            {% if commented %}
+            <div class="alert alert-success" role="alert">
+                Your comment is awaiting approval
+            </div>
+            {% else %}
+            {% if user.is_authenticated %}
+
+            <h3>Leave a comment:</h3>
+            <p>Posting as: {{ user.username }}</p>
+            <form method="post" style="margin-top: 1.3em;">
+                {{ comment_form | crispy }}
+                {% csrf_token %}
+                <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+            </form>
+            {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>
 </div>
 
 {% endblock content %}
