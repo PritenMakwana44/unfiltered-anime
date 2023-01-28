@@ -20,4 +20,7 @@ class CommentsAdmin(admin.ModelAdmin):
 
     def approve_comments(self, request, queryset):
         queryset.update(approved=True)
-        
+
+@admin.register(WatchLater)
+class WatchLaterAdmin(SummernoteModelAdmin):
+    list_display = ('username', 'review_id')

@@ -169,7 +169,7 @@ def delete_review(request, slug):
     messages.success(request, "Review deleted successfully.")
     return redirect('home')
 
-
+"""
 @login_required
 def add_to_watch_later(request, review_id):
     if request.user.is_authenticated:
@@ -180,6 +180,28 @@ def add_to_watch_later(request, review_id):
         return redirect('home')
     else:
         return redirect('login')
+"""
+
+@login_required
+def add_to_watch_later(request, review_id):
+    if request.user.is_authenticated:
+        # check if the review has already been added
+        existing_watch_later = WatchLater.objects.filter(review_id=review_id, username=request.user)
+        if existing_watch_later.exists():
+            messages.error(request, "Already in Watch list")
+            # the review has already been added
+
+            return redirect('home')  # or some other appropriate response
+
+        watch_later = WatchLater()
+        watch_later.review_id = Review.objects.get(review_id=review_id)
+        watch_later.username = request.user
+        watch_later.save()
+        return redirect('home')
+    else:
+        return redirect('login')
+
+
 
 
 def watch_later_list(request):

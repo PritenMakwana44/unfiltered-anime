@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Watch Later</h1>
+{% for watch_later in watch_later_list %}
+    {{ watch_later.review_id.title }}</a>
+    <p>Added by {{ watch_later.username }}</p>
+    <br>
+{% endfor %}
+
+
+{% endblock content %}

@@ -46,15 +46,26 @@
                                                 class="fa-regular fa-thumbs-up"></i> {{ review.number_of_upvotes }} <i
                                                 class="fa-regular fa-thumbs-down"></i> {{ review.number_of_downvotes }}
                                         </p>
-                                        
+
+                                        {% if review.id in watch_later_list %}
+                                        <form action="{% url 'remove_from_watch_later' review.review_id %}"
+                                            method="post">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="review_id" value="{{ review.id }}" />
+                                            <button type="submit">Remove from Watch Later</button>
+                                        </form>
+                                        {% else %}
                                         <form action="{% url 'add_to_watch_later' review.review_id %}" method="post">
                                             {% csrf_token %}
                                             <input type="hidden" name="review_id" value="{{ review.id }}" />
                                             <button type="submit">Add to Watch Later</button>
                                         </form>
-                                        
-                                          
-                                       
+                                        {% endif %}
+
+
+
+
+
                                     </p>
                             </div>
                         </div>
