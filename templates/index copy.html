@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<hr>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Welcome to Unfiltered Anime</h1>
+        <p class="lead">The only place you can review Anime and find your next favorite Anime!</p>
+    </div>
+</div>
+<hr>
+<div class="container-fluid">
+    <div class="row">
+        <!-- Blog Entries Column -->
+        <div class="col-12 mt-3 left">
+            <div class="row">
+                {% for review in review_list %}
+                <div class="container px-4 px-lg-5">
+                    <div class="row gx-4 gx-lg-5 justify-content-center">
+                        <div class="col-md-10 col-lg-8 col-xl-7">
+                            <div class="card-body">
+                                <div class="image-container">
+                                    {% if "placeholder" in review.featured_image.url %}
+                                    {% load static %}
+                                    <img class="card-img-top" src="{% static 'default.jpg' %}">
+                                    {% else %}
+                                    <img class="card-img-top" src=" {{ review.featured_image.url }}">
+                                    {% endif %}
+                                    <div class="image-flash">
+                                        <p class="username">Username: {{ review.username }}</p>
+                                    </div>
+                                </div>
+                                {% if review.slug %}
+                                <a href="{% url 'review_detail' review.slug %}" class="review-link">
+                                    <h2 class="class-title">{{ review.title }}</h2>
+                                    <p class="card-text">{{ review.description }} </p>
+                                </a>
+                                {% endif %}
+                                <hr />
+                                <p class="card-text text-muted h6">{{ review.publish_date }} <i
+                                        class="fa-regular fa-thumbs-up"></i> {{ review.number_of_upvotes }} <i
+                                        class="fa-regular fa-thumbs-down"></i> {{ review.number_of_downvotes }}
+                                </p>
+                                <br>
+                                {% if review.id in watch_later_list %}
+                                <form action="{% url 'remove_from_watch_later' review.id %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="review_id" value="{{ review.id }}" />
+                                    <button type="submit">Remove from Watch Later</button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'add_to_watch_later' review.review_id %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="review_id" value="{{ review.id }}" />
+                                    <button type="submit">Add to Watch Later</button>
+                                    
+                                </form>
+                               
+                                {% endif %}
+
+                                <hr>
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 %}
+            </div>
+            <div class="row'>
+            {% endif %}
+
+            {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    {% if is_paginated %}
+    <nav aria-label=" Page navigation">
+                <ul class="pagination justify-content-center">
+                    {% if page_obj.has_previous %}
+                    <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+                    {% endif %}
+                    {% if page_obj.has_next %}
+                    <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+
+                    {% endif %}
+                </ul>
+                </nav>
+                {% endif %}
+            </div>
+
+            {%endblock%}

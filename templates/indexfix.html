@@ -1,21 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<hr />
-<div class="jumbotron jumbotron-fluid">
 
+<hr>
+<div class="jumbotron jumbotron-fluid">
     <div class="container">
-        <div>
-            <h1 class="display-4">Welcome to Unfiltered Anime</h1>
-            <p class="lead">The only place you can review Anime and find your next favourite Anime!</p>
-        </div>
+        <h1 class="display-4">Welcome to Unfiltered Anime</h1>
+        <p class="lead">The only place you can review Anime and find your next favorite Anime!</p>
     </div>
 </div>
-<hr />
-
-
-<div class="container-fluid">
-    <div class="row">
+<hr>
 
         <!-- Blog Entries Column -->
         
@@ -36,40 +30,41 @@
                                 {% if review.slug %}
                                 <a href="{% url 'review_detail' review.slug %}" class="review-link">
                                     <h2 class="class-title">{{ review.title }}</h2>
-                                    <p class="card-text"> {{ review.description }} </p> </a>
-                                        {% endif %}
-                                        <hr />
-                                        <p class="card-text text-muted h6">{{ review.publish_date }} <i
-                                                class="fa-regular fa-thumbs-up"></i> {{ review.number_of_upvotes }} <i
-                                                class="fa-regular fa-thumbs-down"></i> {{ review.number_of_downvotes }}
-                                        </p>
+                                    <p class="card-text">{{ review.description }} </p>
+                                </a>
+                                {% endif %}
+                                <hr />
+                                <p class="card-text text-muted h6">{{ review.publish_date }} <i
+                                        class="fa-regular fa-thumbs-up"></i> {{ review.number_of_upvotes }} <i
+                                        class="fa-regular fa-thumbs-down"></i> {{ review.number_of_downvotes }}
+                                </p>
+                                <br>
+                                {% if review.id in watch_later_list %}
+                                <form action="{% url 'remove_from_watch_later' review.id %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="review_id" value="{{ review.id }}" />
+                                    <button type="submit">Remove from Watch Later</button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'add_to_watch_later' review.review_id %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="review_id" value="{{ review.id }}" />
+                                    <button type="submit">Add to Watch Later</button>
 
-                                        {% if review.id in watch_later_list %}
-                                        <form action="{% url 'remove_from_watch_later' review.review_id %}"
-                                            method="post">
-                                            {% csrf_token %}
-                                            <input type="hidden" name="review_id" value="{{ review.id }}" />
-                                            <button type="submit">Remove from Watch Later</button>
-                                        </form>
-                                        {% else %}
-                                        <form action="{% url 'add_to_watch_later' review.review_id %}" method="post">
-                                            {% csrf_token %}
-                                            <input type="hidden" name="review_id" value="{{ review.id }}" />
-                                            <button type="submit">Add to Watch Later</button>
-                                        </form>
-                                        {% endif %}
+                                </form>
 
+                                {% endif %}
 
+                                <hr>
 
-
-
-                                    </p>
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
                 {% if forloop.counter|divisibleby:3 %}
             </div>
+        
             {% endif %}
 
             {% endfor %}

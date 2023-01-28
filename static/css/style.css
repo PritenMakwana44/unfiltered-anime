@@ -1,69 +1,38 @@
 body {
     background-color: #F9FAFC;
+    color: orange;
+
 }
 
-.brand {
-    font-family: Lato, sans-serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #4A4A4F;
+.display-4 {
+    text-align: center;
 }
 
-.red-o {
-    color: #E84610;
+.lead {
+    text-align: center;
 }
 
-.thin {
-    font-weight: 300;
-}
-
-.light-bg {
-    background-color: #fff;
-}
-
-.dark-bg {
-    background-color: #445261;
-}
-
-.main-bg {
-    background-color: #F9FAFC;
-}
-
-.card {
-    border: none;
-    background-color: transparent;
-}
-
-
-.image-container {
-    position: relative;
-}
-
-.image-flash {
-    position: absolute;
-    bottom: 5%;
-    min-width: 30%;
-    left: -2px;
-    background-color: #23BBBB;
+hr {
+    color: grey;
 }
 
 .username {
-    color: white;
+    color: orange;
     margin: 4px;
-    text-transform: uppercase;
+
 }
 
-.masthead {
-    margin-top: 10px;
-    overflow: hidden;
-    position: relative;
-    display: inline-block;
-    height: 5%;
-    width: 100%;
+.main-bg {
+    text-align: center;
+}
+
+.card-img-top {
+    width: 80%;
+    height: 80%;
 }
 
 .masthead-text {
-    background-color: #445261;
+    background-color: grey;
     color: white;
     position: relative;
 }
@@ -73,28 +42,14 @@ body {
     overflow: hidden;
 }
 
-.masthead-image:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 90%;
-    height: 100%;
-    width: 150%;
-    background: #445261;
-    -webkit-transform: skew(15deg);
-    -moz-transform: skew(15deg);
-    transform: skew(15deg);
-    z-index: 100;
-}
-
 .review-link {
     text-decoration: none;
-    color: #445261;
+    color: grey
 }
 
 .review-link:hover,
 .page-link {
-    color: #E84610;
+    color: orange;
 }
 
 .review-title {
@@ -104,57 +59,76 @@ body {
 
 .review-subtitle {
     margin-left: 5%;
-    color: lightgray;
-}
-
-.btn-signup {
-    background-color: #23BBBB;
-    color: #fff;
-}
-
-.btn-signup:hover,
-.btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
+    color: orange;
 }
 
 .link {
-    color: #23BBBB;
+    color: grey;
     text-decoration: none;
 }
 
 .link:hover,
 .link:active {
-    color: #445261;
+    color: grey;
     text-decoration: underline;
 }
 
 .btn-upvotes {
-    color: #E84610;
+    color: grey;
     border: none;
     background: transparent;
 }
 
 .btn-upvotes:hover,
 .btn-upvotes:active {
-    color: #E84610;
+    color: orange;
     background: transparent;
     border: none;
 }
 
 .btn-downvotes {
-    color: #E84610;
+    color: grey;
     border: none;
     background: transparent;
 }
 
 .btn-downvotes:hover,
 .btn-downvotes:active {
-    color: #E84610;
+    color: orange;
     background: transparent;
     border: none;
 }
 
-.contain{
-  object-fit: contain;
+button {
+    display: inline-block;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    padding: 0 24px;
+    border-radius: 50px;
+    min-width: 200px;
+    height: 50px;
+    font-size: 18px;
+    background-color: orange;
+    font-weight: 500;
+    color: #222;
+
+
+}
+
+button:hover {
+    display: inline-block;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    padding: 0 24px;
+    border-radius: 50px;
+    min-width: 200px;
+    height: 50px;
+    font-size: 18px;
+    background-color: grey;
+    font-weight: 500;
+    color: #222;
+
+
 }

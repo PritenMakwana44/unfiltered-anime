@@ -188,7 +188,7 @@ def add_to_watch_later(request, review_id):
         # check if the review has already been added
         existing_watch_later = WatchLater.objects.filter(review_id=review_id, username=request.user)
         if existing_watch_later.exists():
-            messages.error(request, "Already in Watch list")
+            messages.error(request, "Already added to Watch list!")
             # the review has already been added
 
             return redirect('home')  # or some other appropriate response
@@ -203,14 +203,21 @@ def add_to_watch_later(request, review_id):
 
 
 
-
 def watch_later_list(request):
     watch_later_list = WatchLater.objects.filter(username=request.user)
     return render(request, 'watch_later/watch_later_list.html', {'watch_later_list': watch_later_list})
 
 """
 @login_required
-def remove_from_watch_later(request, watch_id):
-    WatchLater.objects.filter(watch_id=watch_id).delete()
+def remove_from_watch_later(request, review_id):
+    WatchLater.objects.filter(review_id=review_id, username=request.user).delete()
     return redirect('watch_later_list')
 """
+
+@login_required
+def remove_from_watch_later(request, review_id):
+    if request.user.is_authenticated:
+        WatchLater.objects.filter(username=request.user, review_id=review_id).delete()
+        return redirect('watch_later_list')
+    else:
+        return redirect('login')
