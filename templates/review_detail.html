@@ -55,7 +55,7 @@
                     {{ review.fav_character | safe }}
                 </p>
 
-            <span class="rev-det-1">
+            <div class="votes-div">
                 <strong>
                     {% if user.is_authenticated %}
                     <form class="d-inline" action="{% url 'review_upvotes' review.slug %}" method="POST">
@@ -71,12 +71,12 @@
                     {% else %}
                     <span class="text-secondary"><i class="fa-regular fa-thumbs-up"></i></span>
                     {% endif %}
-                    <span> {{ review.number_of_upvotes }} </span>
+                    <span class="votes-number"> {{ review.number_of_upvotes }} </span>
                 </strong>
 
-            </span>
+         
             <br>
-            <span class="rev-det-3">
+            
                 <strong>
                 {% if user.is_authenticated %}
                 <form class="d-inline" action="{% url 'review_downvotes' review.slug %}" method="POST">
@@ -92,10 +92,10 @@
                 {% else %}
                 <span><i class="fa-regular fa-thumbs-down"></i></span>
                 {% endif %}
-                <span> {{ review.number_of_downvotes }} </span>
+                <span class="votes-number"> {{ review.number_of_downvotes }} </span>
                 </strong>
 
-            </span>
+            </div>
 
 
                 <div class="row mt-4">
@@ -157,6 +157,7 @@
             <form method="post" style="margin-top: 1.3em;">
                 {{ comment_form | crispy }}
                 {% csrf_token %}
+                <br>
                 <button type="submit" class="btn btn-signup btn-lg">Submit</button>
             </form>
             {% endif %}

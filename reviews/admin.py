@@ -3,6 +3,8 @@ from .models import Review, Comments, WatchLater
 from django_summernote.admin import SummernoteModelAdmin
 
 
+
+
 @admin.register(Review)
 class ReviewAdmin(SummernoteModelAdmin):
     list_filter = ('status', 'publish_date',) # may not need
@@ -24,3 +26,6 @@ class CommentsAdmin(admin.ModelAdmin):
 @admin.register(WatchLater)
 class WatchLaterAdmin(SummernoteModelAdmin):
     list_display = ('username', 'review_id')
+
+
+
