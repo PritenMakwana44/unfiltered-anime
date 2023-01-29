@@ -43,9 +43,16 @@
                                                 class="fa-regular fa-thumbs-up"></i> {{ watch_later.review_id.number_of_upvotes }} <i
                                                 class="fa-regular fa-thumbs-down"></i> {{ watch_later.review_id.number_of_downvotes }}
                                         </p>
+                                        </h1>
+                                        <form action="{% url 'remove_from_watch_later' watch_later.watch_id %}" method="post">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="review_id" value="{{ review.id }}" />
+                                            <button type="submit">Remove from Watch Later</button>
+                                        </form>
 
 
 
+                                   
 
 
                                     </p>

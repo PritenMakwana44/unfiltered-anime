@@ -213,7 +213,7 @@ def remove_from_watch_later(request, review_id):
     WatchLater.objects.filter(review_id=review_id, username=request.user).delete()
     return redirect('watch_later_list')
 """
-
+"""
 @login_required
 def remove_from_watch_later(request, review_id):
     if request.user.is_authenticated:
@@ -221,3 +221,15 @@ def remove_from_watch_later(request, review_id):
         return redirect('watch_later_list')
     else:
         return redirect('login')
+"""
+@login_required
+def remove_from_watch_later(request, watch_id):
+    if request.user.is_authenticated:
+            instance = WatchLater.objects.filter(watch_id=watch_id)
+            instance.delete()
+
+            return redirect('home')  # or some other appropriate response
+
+    else:
+        return redirect('login')
+

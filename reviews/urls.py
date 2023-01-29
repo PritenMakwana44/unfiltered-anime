@@ -11,6 +11,6 @@ urlpatterns = [
   path('downvotes/<slug:slug>', views.ReviewDownVotes.as_view(), name='review_downvotes'),
   path('watch_later/add/<int:review_id>/', views.add_to_watch_later, name='add_to_watch_later'),
   path('watch_later/', views.watch_later_list, name='watch_later_list'),
-  path('watch_later/remove/<int:review_id>/', views.remove_from_watch_later, name='remove_from_watch_later'),
+  path('watch_later/remove/<int:watch_id>/', views.remove_from_watch_later, name='remove_from_watch_later'),
   path('<slug:slug>/', views.ReviewDetail.as_view(), name='review_detail'),
 ]
