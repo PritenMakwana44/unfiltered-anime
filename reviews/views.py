@@ -169,19 +169,6 @@ def delete_review(request, slug):
     messages.success(request, "Review deleted successfully.")
     return redirect('home')
 
-"""
-@login_required
-def add_to_watch_later(request, review_id):
-    if request.user.is_authenticated:
-        watch_later = WatchLater()
-        watch_later.review_id = Review.objects.get(review_id=review_id)
-        watch_later.username = User.objects.get(username=request.user.username)
-        watch_later.save()
-        return redirect('home')
-    else:
-        return redirect('login')
-"""
-
 @login_required
 def add_to_watch_later(request, review_id):
     if request.user.is_authenticated:
@@ -199,6 +186,7 @@ def add_to_watch_later(request, review_id):
         watch_later.save()
         return redirect('home')
     else:
+        messages.success(request, "Please login!")
         return redirect('login')
 
 
@@ -207,29 +195,17 @@ def watch_later_list(request):
     watch_later_list = WatchLater.objects.filter(username=request.user)
     return render(request, 'watch_later/watch_later_list.html', {'watch_later_list': watch_later_list})
 
-"""
-@login_required
-def remove_from_watch_later(request, review_id):
-    WatchLater.objects.filter(review_id=review_id, username=request.user).delete()
-    return redirect('watch_later_list')
-"""
-"""
-@login_required
-def remove_from_watch_later(request, review_id):
-    if request.user.is_authenticated:
-        WatchLater.objects.filter(username=request.user, review_id=review_id).delete()
-        return redirect('watch_later_list')
-    else:
-        return redirect('login')
-"""
+
 @login_required
 def remove_from_watch_later(request, watch_id):
     if request.user.is_authenticated:
             instance = WatchLater.objects.filter(watch_id=watch_id)
             instance.delete()
+            messages.success(request, "Removed from your watch later list!")
 
             return redirect('home')  # or some other appropriate response
 
     else:
+        messages.success(request, "Please login!")
         return redirect('login')
 

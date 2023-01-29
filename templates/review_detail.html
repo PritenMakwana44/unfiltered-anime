@@ -107,7 +107,11 @@
                 <div class="row mt-4">
                     {% if request.user == review.username %}
                     <a href="{% url 'review_delete' review.slug %}"><button type="button">Delete Review</button></a>
+                    
                     {% endif %}
+
+
+                    
                 </div>
 
             </div>

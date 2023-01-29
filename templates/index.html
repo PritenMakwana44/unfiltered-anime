@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 <hr />
 <div class="jumbotron jumbotron-fluid header-image">
 
@@ -49,6 +50,7 @@
                                             {% csrf_token %}
                                             <input type="hidden" name="review_id" value="{{ review.id }}" />
                                             <button type="submit">Add to Watch Later</button>
+
                                         </form>
                                         
 
