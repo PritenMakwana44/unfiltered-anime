@@ -15,12 +15,12 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 
 
-
 class ReviewList(generic.ListView):
     model = Review
     queryset = Review.objects.filter(status=1).order_by('-publish_date')
     template_name = 'index.html'
     paginate_by = 10
+
 
 class AddReview(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     form_class = ReviewForm
@@ -31,14 +31,11 @@ class AddReview(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         print('USER: ', self.request.user)
         form.instance.username = self.request.user
         return super().form_valid(form)
-     
-
 
 
 class ReviewDetail(View):
     model = Review
     template_name = "review_detail.html"
-
 
     def get(self, request, slug, *args, **kwargs):
         queryset = Review.objects.filter(status=1)
@@ -48,14 +45,14 @@ class ReviewDetail(View):
         downvotes = False
         if review.upvotes.filter(id=self.request.user.id).exists():
             upvotes = True
-        
+
         if review.downvotes.filter(id=self.request.user.id).exists():
             downvotes = True
-        
+
         return render(
             request,
             "review_detail.html",
-        
+
             {
                 "review": review,
                 "comments": comments,
@@ -64,10 +61,7 @@ class ReviewDetail(View):
                 "downvotes": downvotes,
                 "comment_form": CommentForm(),
             },
-
-        
         )
-
 
     def post(self, request, slug, *args, **kwargs):
         queryset = Review.objects.filter(status=1)
@@ -81,7 +75,7 @@ class ReviewDetail(View):
         if review.downvotes.filter(id=self.request.user.id).exists():
             downvotes = True
             upvotes = False
-        
+
         comment_form = CommentForm(data=request.POST)
 
         if comment_form.is_valid():
@@ -90,7 +84,7 @@ class ReviewDetail(View):
             comment.review_id = review
             comment.save()
             return redirect('review_detail', review.slug)
-        
+
         else:
             return render(
                 request,
@@ -106,9 +100,7 @@ class ReviewDetail(View):
                 )
 
 
-
 class ReviewUpvotes(View):
-
     def post(self, request, slug):
         review = get_object_or_404(Review, slug=slug)
         if review.downvotes.filter(id=request.user.id).exists():
@@ -117,8 +109,9 @@ class ReviewUpvotes(View):
             review.upvotes.remove(request.user)
         else:
             review.upvotes.add(request.user)
-        
+
         return HttpResponseRedirect(reverse('review_detail', args=[slug]))
+
 
 class ReviewDownVotes(View):
 
@@ -130,7 +123,7 @@ class ReviewDownVotes(View):
             review.downvotes.remove(request.user)
         else:
             review.downvotes.add(request.user)
-        
+
         return HttpResponseRedirect(reverse('review_detail', args=[slug]))
 
 
@@ -148,7 +141,8 @@ def review_edit(request, slug):
             messages.success(request, 'Successfully updated!')
             return redirect(reverse('review_detail', args=[slug]))
         else:
-            messages.error(request, ('Failed to update. ' 'Please ensure the form is valid.'))
+            messages.error(request,
+                           ('Please ensure the form is valid.'))
     else:
         form = ReviewForm(instance=review)
         messages.info(request, f'You are editing {review.title}')
@@ -159,21 +153,25 @@ def review_edit(request, slug):
         }
         return render(request, template, context)
 
+
 @login_required
 def delete_review(request, slug):
     review = get_object_or_404(Review, slug=slug)
     if request.user != review.username:
-        messages.error(request, "You are not authorized to delete this review.")
+        messages.error(request,
+                       "You are not authorized to delete this review.")
         return redirect('review_detail', review.slug)
     review.delete()
     messages.success(request, "Review deleted successfully.")
     return redirect('home')
 
+
 @login_required
 def add_to_watch_later(request, review_id):
     if request.user.is_authenticated:
         # check if the review has already been added
-        existing_watch_later = WatchLater.objects.filter(review_id=review_id, username=request.user)
+        existing_watch_later = WatchLater.objects.filter(review_id=review_id,
+                                                         username=request.user)
         if existing_watch_later.exists():
             messages.error(request, "Already added to Watch list!")
             # the review has already been added
@@ -190,22 +188,21 @@ def add_to_watch_later(request, review_id):
         return redirect('login')
 
 
-
 def watch_later_list(request):
     watch_later_list = WatchLater.objects.filter(username=request.user)
-    return render(request, 'watch_later/watch_later_list.html', {'watch_later_list': watch_later_list})
+    return render(request, 'watch_later/watch_later_list.html',
+                  {'watch_later_list': watch_later_list})
 
 
 @login_required
 def remove_from_watch_later(request, watch_id):
     if request.user.is_authenticated:
-            instance = WatchLater.objects.filter(watch_id=watch_id)
-            instance.delete()
-            messages.success(request, "Removed from your watch later list!")
+        instance = WatchLater.objects.filter(watch_id=watch_id)
+        instance.delete()
+        messages.success(request, "Removed from your watch later list!")
 
-            return redirect('home')  # or some other appropriate response
+        return redirect('home')  # or some other appropriate response
 
     else:
         messages.success(request, "Please login!")
         return redirect('login')
-

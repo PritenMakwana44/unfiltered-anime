@@ -26,6 +26,3 @@ class CommentsAdmin(admin.ModelAdmin):
 @admin.register(WatchLater)
 class WatchLaterAdmin(SummernoteModelAdmin):
     list_display = ('username', 'review_id')
-
-
-
