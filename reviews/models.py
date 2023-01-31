@@ -29,10 +29,7 @@ class Review(models.Model):
         User, related_name='review_upvote', blank=True)
     downvotes = models.ManyToManyField(
         User, related_name='review_downvote', blank=True)
-
-    # def save(self, *args, **kwargs):
-    #     self.slug = slugify(self.slug)
-    #     super(Review, self).save(*args, **kwargs)
+        
 
     class Meta:
         ordering = ['-publish_date']
