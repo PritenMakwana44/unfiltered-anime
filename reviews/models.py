@@ -3,8 +3,9 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.utils.text import slugify
 
-
-
+"""
+Constant Variables
+"""
 STATUS = ((0, "Draft"), (1, "Published"))
 ANIME_TYPE = [
     ('FILM', 'Film'),
@@ -23,7 +24,7 @@ class Review(models.Model):
     description = models.CharField(max_length=1000, default='Add description here')
     review = models.CharField(max_length=2000, unique=True)
     fav_character = models.CharField(max_length=300)
-    status = models.IntegerField(choices=STATUS, default=0)
+    status = models.IntegerField(choices=STATUS, default=1)
     upvotes = models.ManyToManyField(
         User, related_name='review_upvote', blank=True)
     downvotes = models.ManyToManyField(

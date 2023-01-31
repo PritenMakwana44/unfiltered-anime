@@ -3,15 +3,14 @@ from .models import Review, Comments, WatchLater
 from django_summernote.admin import SummernoteModelAdmin
 
 
-
-
 @admin.register(Review)
 class ReviewAdmin(SummernoteModelAdmin):
-    list_filter = ('status', 'publish_date',) # may not need
-    list_display = ('title', 'slug', 'status', 'publish_date') # may not need
-    search_fields = ['title', 'content'] # May not need
-    prepopulated_fields = {'slug': ('title',)} #
+    list_filter = ('status', 'publish_date',)
+    list_display = ('title', 'slug', 'publish_date')
+    search_fields = ['title', 'content']
+    prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('description', 'review', 'body')
+
 
 @admin.register(Comments)
 class CommentsAdmin(admin.ModelAdmin):
@@ -22,6 +21,7 @@ class CommentsAdmin(admin.ModelAdmin):
 
     def approve_comments(self, request, queryset):
         queryset.update(approved=True)
+
 
 @admin.register(WatchLater)
 class WatchLaterAdmin(SummernoteModelAdmin):
