@@ -5,7 +5,7 @@
 
 <head>
     <title>Unfiltered Anime</title>
-    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
@@ -21,6 +21,9 @@
 </head>
 
 <body class="d-flex flex-column h-100 main-bg">
+   
+        
+
 
     <!-- Navigation -->
 
@@ -37,6 +40,7 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
+
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'add_review' %}">Add Review</a>
@@ -47,6 +51,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                     </li>
+                        {% if user.is_superuser %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'admin:index' %}">Admin Site Access</a>
+                        </li>
+                        {% endif %}
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
@@ -54,13 +63,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_login' %}">Login</a>
                     </li>
-
-
                     {% endif %}
+                    
                 </ul>
             </div>
         </div>
     </nav>
+
 
     <div class="container">
         <div class="row">
@@ -68,23 +77,24 @@
                 {% for message in messages %}
                 <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
                     {{ message | safe }}
-                    
+
                 </div>
                 {% endfor %}
             </div>
         </div>
     </div>
-
+    
 
     <main class="flex-shrink-0 main-bg">
         {% block content %}
         <!-- Content Goes here -->
         {% endblock content %}
     </main>
+  
 
     <!-- Footer -->
     <footer class=">
-        <p class="text-center">Made by Priten Makwana</p>
+        <p class=" text-center">Made by Priten Makwana</p>
         <p Follow us: <i class="fab fa-facebook-square ms-3"></i>
             <i class="fab fa-twitter-square ms-3"></i>
             <i class="fab fa-instagram-square ms-3"></i>

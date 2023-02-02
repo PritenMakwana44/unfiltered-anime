@@ -35,8 +35,21 @@ button:hover {
     background-color: grey;
     font-weight: 500;
     color: #222;
+}
 
-
+.adminbtn {
+    display: inline-block;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    padding: 0 24px;
+    border-radius: 50px;
+    width: 20%;
+    height: 50px;
+    font-size: 18px;
+    background-color: grey;
+    font-weight: 500;
+    color: #222;
 }
 
 .display-4 {
@@ -171,7 +184,7 @@ hr {
       margin: 0 auto;
     }
   }
-"""
+
   @media only screen and (min-width: 400px) and (max-width: 730px) {
     .navbar-toggler {
         position: absolute;
