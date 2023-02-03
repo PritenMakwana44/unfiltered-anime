@@ -55,47 +55,49 @@
                     {{ review.fav_character | safe }}
                 </p>
 
-            <div class="votes-div">
-                <strong>
-                    {% if user.is_authenticated %}
-                    <form class="d-inline" action="{% url 'review_upvotes' review.slug %}" method="POST">
-                        {% csrf_token %}
-                        {% if upvoted %}
-                        <button type="submit" name="review_id" value="{{review.slug}}" class="btn-upvotes"><i
-                                class="fa-sharp fa-solid fa-thumbs-up"></i></button>
+
+
+                <div class="votes-div">
+                    <strong>
+                        {% if user.is_authenticated %}
+                        <form class="d-inline" action="{% url 'review_upvotes' review.slug %}" method="POST">
+                            {% csrf_token %}
+                            {% if upvoted %}
+                            <button type="submit" name="review_id" value="{{review.slug}}" class="btn-upvotes"><i
+                                    class="fa-sharp fa-solid fa-thumbs-up"></i></button>
+                            {% else %}
+                            <button type="submit" name="review_id" value="{{review.slug}}" class="btn-upvotes"><i
+                                    class="fa-regular fa-thumbs-up"></i></button>
+                            {% endif %}
+                        </form>
                         {% else %}
-                        <button type="submit" name="review_id" value="{{review.slug}}" class="btn-upvotes"><i
-                                class="fa-regular fa-thumbs-up"></i></button>
+                        <span class="text-secondary"><i class="fa-regular fa-thumbs-up"></i></span>
                         {% endif %}
-                    </form>
-                    {% else %}
-                    <span class="text-secondary"><i class="fa-regular fa-thumbs-up"></i></span>
-                    {% endif %}
-                    <span class="votes-number"> {{ review.number_of_upvotes }} </span>
-                </strong>
+                        <span class="votes-number"> {{ review.number_of_upvotes }} </span>
+                    </strong>
 
-         
-            <br>
-            
-                <strong>
-                {% if user.is_authenticated %}
-                <form class="d-inline" action="{% url 'review_downvotes' review.slug %}" method="POST">
-                    {% csrf_token %}
-                    {% if upvoted %}
-                    <button type="submit" name="review_id" value="{{review.slug}}" class="btn-downvotes"><i
-                            class="fa-sharp fa-solid fa-thumbs-down"></i></button>
-                    {% else %}
-                    <button type="submit" name="review_id" value="{{review.slug}}" class="btn-downvotes"><i
-                            class="fa-regular fa-thumbs-down"></i></button>
-                    {% endif %}
-                </form>
-                {% else %}
-                <span><i class="fa-regular fa-thumbs-down"></i></span>
-                {% endif %}
-                <span class="votes-number"> {{ review.number_of_downvotes }} </span>
-                </strong>
 
-            </div>
+                    <br>
+
+                    <strong>
+                        {% if user.is_authenticated %}
+                        <form class="d-inline" action="{% url 'review_downvotes' review.slug %}" method="POST">
+                            {% csrf_token %}
+                            {% if upvoted %}
+                            <button type="submit" name="review_id" value="{{review.slug}}" class="btn-downvotes"><i
+                                    class="fa-sharp fa-solid fa-thumbs-down"></i></button>
+                            {% else %}
+                            <button type="submit" name="review_id" value="{{review.slug}}" class="btn-downvotes"><i
+                                    class="fa-regular fa-thumbs-down"></i></button>
+                            {% endif %}
+                        </form>
+                        {% else %}
+                        <span><i class="fa-regular fa-thumbs-down"></i></span>
+                        {% endif %}
+                        <span class="votes-number"> {{ review.number_of_downvotes }} </span>
+                    </strong>
+
+                </div>
 
 
                 <div class="row mt-4">
@@ -105,14 +107,12 @@
                     {% endif %}
                 </div>
                 <div class="row mt-4">
-                    {% if request.user == review.username %}
+                    {% if request.user.is_staff or request.user == review.username %}
                     <a href="{% url 'review_delete' review.slug %}"><button type="button">Delete Review</button></a>
-                    
+
                     {% endif %}
-
-
-                    
                 </div>
+
 
             </div>
         </div>
@@ -142,6 +142,13 @@
                 </p>
                 <!-- The body of the comment goes before the | -->
                 {{ comment.body | linebreaks }}
+                {% if user.is_staff %}
+                <form method="post" style="display: inline-block;" action="{% url 'delete_comment' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="comment_id" value="{{ comment.id }}">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+                {% endif %}
             </div>
             <!-- Our for loop ends here -->
             {% endfor %}
@@ -162,11 +169,11 @@
                 {{ comment_form | crispy }}
                 {% csrf_token %}
                 <br>
-                <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                <button type="submit">Submit</button>
             </form>
             {% endif %}
             {% endif %}
-    
+
         </div>
     </div>
 </div>

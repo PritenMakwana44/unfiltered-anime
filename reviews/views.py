@@ -32,7 +32,7 @@ class AddReview(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         form.instance.username = self.request.user
         return super().form_valid(form)
 
-
+"""
 class ReviewDetail(View):
     model = Review
     template_name = "review_detail.html"
@@ -99,6 +99,84 @@ class ReviewDetail(View):
                 },
                 )
 
+"""
+
+class ReviewDetail(View):
+    model = Review
+    template_name = "review_detail.html"
+
+    def get(self, request, slug, *args, **kwargs):
+        queryset = Review.objects.filter(status=1)
+        review = get_object_or_404(queryset, slug=slug)
+        comments = review.comments.filter(approved=True).order_by('comment_date')
+        upvotes = False
+        downvotes = False
+        if review.upvotes.filter(id=self.request.user.id).exists():
+            upvotes = True
+
+        if review.downvotes.filter(id=self.request.user.id).exists():
+            downvotes = True
+
+        return render(
+            request,
+            "review_detail.html",
+
+            {
+                "review": review,
+                "comments": comments,
+                "commented": False,
+                "upvotes": upvotes,
+                "downvotes": downvotes,
+                "comment_form": CommentForm(),
+                "is_staff": request.user.is_staff,
+            },
+        )
+
+    def post(self, request, slug, *args, **kwargs):
+        queryset = Review.objects.filter(status=1)
+        review = get_object_or_404(queryset, slug=slug)
+        comments = review.comments.filter(approved=True).order_by('comment_date')
+        upvotes = False
+        downvotes = False
+        if review.upvotes.filter(id=self.request.user.id).exists():
+            upvotes = True
+            downvotes = False
+        if review.downvotes.filter(id=self.request.user.id).exists():
+            downvotes = True
+            upvotes = False
+
+        comment_form = CommentForm(data=request.POST)
+
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.username = request.user
+            comment.review_id = review
+            comment.save()
+            return redirect('review_detail', review.slug)
+
+        else:
+            return render(
+                request,
+                "review_detail.html",
+                {
+                    "review": review,
+                    "comments": comments,
+                    "commented": True,
+                    "upvotes": upvotes,
+                    "downvotes": downvotes,
+                    "comment_form": comment_form,
+                    "is_staff": request.user.is_staff,
+                },
+            )
+
+class DeleteCommentView(View):
+    def post(self, request, *args, **kwargs):
+        comment_id = request.POST.get('comment_id')
+        comment = Comment.objects.get(id=comment_id)
+        comment.delete()
+        return redirect('review_detail', comment.review.slug)
+
+
 
 class ReviewUpvotes(View):
     def post(self, request, slug):
@@ -153,7 +231,7 @@ def review_edit(request, slug):
         }
         return render(request, template, context)
 
-
+"""
 @login_required
 def delete_review(request, slug):
     review = get_object_or_404(Review, slug=slug)
@@ -164,7 +242,17 @@ def delete_review(request, slug):
     review.delete()
     messages.success(request, "Review deleted successfully.")
     return redirect('home')
+"""
 
+@login_required
+def delete_review(request, slug):
+    review = get_object_or_404(Review, slug=slug)
+    if not request.user.is_staff and request.user != review.username:
+        messages.error(request, "You are not authorized to delete this review.")
+        return redirect('review_detail', review.slug)
+    review.delete()
+    messages.success(request, "Review deleted successfully.")
+    return redirect('home')
 
 @login_required
 def add_to_watch_later(request, review_id):
@@ -206,5 +294,6 @@ def remove_from_watch_later(request, watch_id):
     else:
         messages.success(request, "Please login!")
         return redirect('login')
+
 
 

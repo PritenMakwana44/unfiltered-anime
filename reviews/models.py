@@ -40,6 +40,7 @@ class Review(models.Model):
         User, related_name='review_upvote', blank=True)
     downvotes = models.ManyToManyField(
         User, related_name='review_downvote', blank=True)
+   
 
     class Meta:
         ordering = ['-publish_date']
@@ -68,6 +69,9 @@ class Comments(models.Model):
     body = models.TextField()
     comment_date = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
+    is_admin = models.BooleanField(default=False)
+    
+    
 
     class Meta:
         ordering = ["comment_date"]
