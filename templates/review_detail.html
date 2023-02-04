@@ -101,7 +101,7 @@
 
 
                 <div class="row mt-4">
-                    {% if request.user == review.username %}
+                    {% if request.user.is_staff or request.user == review.username %}
                     <a href="{% url 'edit_review' review.slug %}"><button type="button">Edit
                             Review</button></a>
                     {% endif %}

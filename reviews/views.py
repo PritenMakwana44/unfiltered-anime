@@ -203,7 +203,7 @@ class ReviewDownVotes(View):
 
         return HttpResponseRedirect(reverse('review_detail', args=[slug]))
 
-
+"""
 @login_required
 def review_edit(request, slug):
     review = get_object_or_404(Review, slug=slug)
@@ -229,19 +229,33 @@ def review_edit(request, slug):
             'review': review,
         }
         return render(request, template, context)
+"""
 
-"""
 @login_required
-def delete_review(request, slug):
+def review_edit(request, slug):
     review = get_object_or_404(Review, slug=slug)
-    if request.user != review.username:
-        messages.error(request,
-                       "You are not authorized to delete this review.")
-        return redirect('review_detail', review.slug)
-    review.delete()
-    messages.success(request, "Review deleted successfully.")
-    return redirect('home')
-"""
+    if not request.user.is_staff and request.user != review.username:
+        messages.error(request, 'Sorry, only the author or staff can edit this review')
+        return redirect(reverse_lazy('home'))
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, request.FILES, instance=review)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated!')
+            return redirect(reverse('review_detail', args=[slug]))
+        else:
+            messages.error(request, ('Please ensure the form is valid.'))
+    else:
+        form = ReviewForm(instance=review)
+        messages.info(request, f'You are editing {review.title}')
+        template = 'edit_review.html'
+        context = {
+            'form': form,
+            'review': review,
+        }
+        return render(request, template, context)
+
+
 
 @login_required
 def delete_review(request, slug):
