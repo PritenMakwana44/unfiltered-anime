@@ -39,7 +39,7 @@ class Review(models.Model):
         User, related_name='review_upvote', blank=True)
     downvotes = models.ManyToManyField(
         User, related_name='review_downvote', blank=True)
-   
+
     class Meta:
         ordering = ['-publish_date']
 
@@ -58,6 +58,11 @@ class Review(models.Model):
         return super().save(*args, **kwargs)
 
 
+"""
+Comments Model
+"""
+
+
 class Comments(models.Model):
     comment_id = models.AutoField(primary_key=True)
     review_id = models.ForeignKey(Review, on_delete=models.CASCADE,
@@ -73,6 +78,11 @@ class Comments(models.Model):
 
     def __str__(self):
         return f"Comment {self.body} by {self.username}"
+
+
+"""
+WatchLater Model
+"""
 
 
 class WatchLater(models.Model):

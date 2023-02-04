@@ -2,6 +2,10 @@ from django.contrib import admin
 from .models import Review, Comments, WatchLater
 from django_summernote.admin import SummernoteModelAdmin
 
+"""
+Admin for Reviews
+"""
+
 
 @admin.register(Review)
 class ReviewAdmin(SummernoteModelAdmin):
@@ -10,6 +14,11 @@ class ReviewAdmin(SummernoteModelAdmin):
     search_fields = ['title', 'content']
     prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('description', 'review', 'body')
+
+
+"""
+Admin for Comments
+"""
 
 
 @admin.register(Comments)
@@ -21,6 +30,11 @@ class CommentsAdmin(admin.ModelAdmin):
 
     def approve_comments(self, request, queryset):
         queryset.update(approved=True)
+
+
+"""
+Admin for WatchLater feature
+"""
 
 
 @admin.register(WatchLater)
