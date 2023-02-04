@@ -1,3 +1,7 @@
+
+//JS code for message/alerts
+
+
 window.addEventListener('load', function () {
     setTimeout(function () {
       let messages = document.getElementById('msg');

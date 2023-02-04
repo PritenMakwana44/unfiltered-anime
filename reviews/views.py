@@ -238,14 +238,12 @@ View for adding to watch later list
 @login_required
 def add_to_watch_later(request, review_id):
     if request.user.is_authenticated:
-        # check if the review has already been added
         existing_watch_later = WatchLater.objects.filter(review_id=review_id,
                                                          username=request.user)
         if existing_watch_later.exists():
             messages.error(request, "Already added to Watch list!")
-            # the review has already been added
 
-            return redirect('home')  # or some other appropriate response
+            return redirect('home')
 
         watch_later = WatchLater()
         watch_later.review_id = Review.objects.get(review_id=review_id)

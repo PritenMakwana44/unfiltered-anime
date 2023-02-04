@@ -1,12 +1,11 @@
+/* Body */
 body {
     background-color: #F9FAFC;
     color: orange;
     font-family: 'Fredoka One', cursive;
-
-
 }
 
-
+/* Button */
 button {
     display: inline-block;
     outline: 0;
@@ -20,11 +19,9 @@ button {
     background-color: orange;
     font-weight: 500;
     color: #222;
-
-
 }
 
-
+/* Button - Hover */
 button:hover {
     display: inline-block;
     outline: 0;
@@ -40,6 +37,12 @@ button:hover {
     color: #222;
 }
 
+/* hr */
+hr {
+    color: grey;
+}
+
+/* Admin Button Class */
 .adminbtn {
     display: inline-block;
     outline: 0;
@@ -55,86 +58,93 @@ button:hover {
     color: #222;
 }
 
+/* Display-4 Class */
 .display-4 {
     text-align: center;
 }
 
+/* Lead Class */
 .lead {
     text-align: center;
     font-size: 125%;
     color: grey;
 }
 
-hr {
-    color: grey;
-}
-
+/* Username Class */
 .username {
     color: orange;
     margin: 4px;
-
 }
 
+/* Main bg Class */
 .main-bg {
     text-align: center;
 }
 
+/* card-img-top Class */
 .card-img-top {
     width: 80%;
     height: 80%;
 }
 
+/* Masthead-text Class */
 .masthead-text {
     background-color: grey;
     color: white;
     position: relative;
 }
 
+/* Masthead-image Class */
 .masthead-image {
     position: relative;
     overflow: hidden;
 }
 
+/* Review-link Class */
 .review-link {
     text-decoration: none;
     color: grey
 }
 
+/* Review-link - hover Class */
 .review-link:hover,
 .page-link {
     color: orange;
 }
 
+/* Review-title Class */
 .review-title {
     margin-top: 20%;
     margin-left: 5%;
 }
 
+/* Review-subtitle Class */
 .review-subtitle {
     margin-left: 5%;
     color: orange;
 }
 
+/* Link Class */
 .link {
     color: grey;
     text-decoration: none;
 }
 
+/* Link -hover & active Class */
 .link:hover,
 .link:active {
     color: grey;
     text-decoration: underline;
 }
 
-
-
+/* Upvotes button Class */
 .btn-upvotes {
     color: grey;
     border: none;
     background: transparent;
-    padding: -50%;
 }
 
+/* Upvotes button - hover & active Class */
 .btn-upvotes:hover,
 .btn-upvotes:active {
     color: orange;
@@ -142,12 +152,14 @@ hr {
     border: none;
 }
 
+/* Downvotes button Class */
 .btn-downvotes {
     color: grey;
     border: none;
     background: transparent;
 }
 
+/* Downvotes button - hover & active Class */
 .btn-downvotes:hover,
 .btn-downvotes:active {
     color: orange;
@@ -156,6 +168,7 @@ hr {
 }
 
 
+/* Text input Class */
 .textinput {
     display: block;
     margin-right: auto;
@@ -164,33 +177,34 @@ hr {
 
 }
 
+/* Form control Class */
 .form-control {
     display: block;
     margin-right: auto;
     margin-left: auto;
     width: 50%;
-
 }
 
-#id_email {
-    display: none;
 
-}
+/* Form paragraph label  */
 form p label {
     display: none;
-
 }
+
+/* id_email id */
+#id_email {
+    display: none;
+}
+
+/* id_remember id */
 #id_remember {
     display: none;
-
 }
 
-
+/*  Votes-number Class */
 .votes-number {
-
     margin: 50%;
 }
-
 
 
 /* Medium devices (tablets, 768px and up) */
@@ -201,26 +215,25 @@ form p label {
     }
 
 
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 400px) {
+    .navbar-brand {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
 
-    /* Small devices (landscape phones, 576px and up) */
-    @media (max-width: 400px) {
-        .navbar-brand {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-        }
+    .navbar-brand span.brand span.thin {
+        font-size: 150%;
+    }
 
-        .navbar-brand span.brand span.thin {
-            font-size: 150%;
-        }
-
-        .navbar-toggler {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-        }
+    .navbar-toggler {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
 
     }
 }
