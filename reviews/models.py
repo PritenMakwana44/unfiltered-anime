@@ -31,8 +31,7 @@ class Review(models.Model):
     release_year = models.PositiveSmallIntegerField(null=True, blank=True)
     publish_date = models.DateTimeField(auto_now_add=True,
                                         null=True, blank=True)
-    description = models.CharField(max_length=1000,
-                                   default='')
+    description = models.CharField(max_length=1000)
     review = models.CharField(max_length=2000, unique=True)
     fav_character = models.CharField(max_length=300)
     status = models.IntegerField(choices=STATUS, default=1)
