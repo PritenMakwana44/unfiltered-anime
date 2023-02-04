@@ -32,7 +32,7 @@ class Review(models.Model):
     publish_date = models.DateTimeField(auto_now_add=True,
                                         null=True, blank=True)
     description = models.CharField(max_length=1000,
-                                   default='Add description here')
+                                   default='')
     review = models.CharField(max_length=2000, unique=True)
     fav_character = models.CharField(max_length=300)
     status = models.IntegerField(choices=STATUS, default=1)
@@ -69,7 +69,7 @@ class Comments(models.Model):
     body = models.TextField()
     comment_date = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
-    is_admin = models.BooleanField(default=False)
+
     
     
 

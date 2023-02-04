@@ -1,8 +1,11 @@
 body {
     background-color: #F9FAFC;
     color: orange;
+    font-family: 'Fredoka One', cursive;
+
 
 }
+
 
 button {
     display: inline-block;
@@ -58,6 +61,8 @@ button:hover {
 
 .lead {
     text-align: center;
+    font-size: 125%;
+    color: grey;
 }
 
 hr {
@@ -167,6 +172,18 @@ hr {
 
 }
 
+#id_email {
+    display: none;
+
+}
+form p label {
+    display: none;
+
+}
+#id_remember {
+    display: none;
+
+}
 
 
 .votes-number {
@@ -176,24 +193,34 @@ hr {
 
 
 
-  @media (max-width: 400px) and (max-height: 730px) {
-    button.navbar-toggler {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0 auto;
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 1000px) {
+    .navbar-toggler {
+        position: absolute;
+        right: 20px;
     }
-  }
 
-  @media only screen and (min-width: 400px) and (max-width: 730px) {
-    .navbar-toggler {
-        position: absolute;
-        right: 20px;
-    }
-}
-@media only screen and (min-width: 731px) and (max-width: 900px) {
-    .navbar-toggler {
-        position: absolute;
-        right: 20px;
+
+
+    /* Small devices (landscape phones, 576px and up) */
+    @media (max-width: 400px) {
+        .navbar-brand {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .navbar-brand span.brand span.thin {
+            font-size: 150%;
+        }
+
+        .navbar-toggler {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
     }
 }

@@ -1,13 +1,13 @@
-{% load static %}
-
 <!DOCTYPE html>
+
+{% load static %}
 <html class="h-100">
 
 <head>
     <title>Unfiltered Anime</title>
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/e7126674ce.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -21,25 +21,22 @@
 </head>
 
 <body class="d-flex flex-column h-100 main-bg">
-   
-        
+
+
 
 
     <!-- Navigation -->
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <nav class="navbar navbar-expand-lg navbar-light ">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}"><span class="brand"><span class="thin">Unfiltered
-                        Anime</span></span></span></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+            <a class="navbar-brand" href="{% url 'home' %}"><span class="brand"><span class="thin">UNFILTERED
+                        ANIME</span></span></span></a>
+            <div class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button>
+            </div>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
-                    </li>
 
                     {% if user.is_authenticated %}
                     <li class="nav-item">
@@ -51,11 +48,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                     </li>
-                        {% if user.is_superuser %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'admin:index' %}">Admin Site Access</a>
-                        </li>
-                        {% endif %}
+                    {% if user.is_superuser %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'admin:index' %}">Admin Site Access</a>
+                    </li>
+                    {% endif %}
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
@@ -64,7 +61,7 @@
                         <a class="nav-link" href="{% url 'account_login' %}">Login</a>
                     </li>
                     {% endif %}
-                    
+
                 </ul>
             </div>
         </div>
@@ -83,22 +80,19 @@
             </div>
         </div>
     </div>
-    
+
 
     <main class="flex-shrink-0 main-bg">
         {% block content %}
         <!-- Content Goes here -->
         {% endblock content %}
     </main>
-  
+
 
     <!-- Footer -->
-    <footer class=">
-        <p class=" text-center">Made by Priten Makwana</p>
-        <p Follow us: <i class="fab fa-facebook-square ms-3"></i>
-            <i class="fab fa-twitter-square ms-3"></i>
-            <i class="fab fa-instagram-square ms-3"></i>
-            <i class="fab fa-youtube-square ms-3"></i></p>
+    <footer>
+        <p class="text-left">Made by Priten Makwana</p>
+        
     </footer>
     <script src="/static/js/script.js"></script>
 </body>
