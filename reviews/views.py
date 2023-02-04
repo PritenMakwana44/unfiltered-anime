@@ -152,6 +152,7 @@ class ReviewDetail(View):
             comment.username = request.user
             comment.review_id = review
             comment.save()
+            messages.success(request, "Comment has gone for authorisation!")
             return redirect('review_detail', review.slug)
 
         else:

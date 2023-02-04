@@ -38,13 +38,13 @@
                                 </div>
                                 {% if review.slug %}
                                 <a href="{% url 'review_detail' review.slug %}" class="review-link">
-                                    <h2 class="class-title">{{ review.title }}</h2>
-                                    <p class="card-text"> {{ review.description }}</p> </a>
+                                    <h2 class="class-title">{{ review.title | safe }}</h2>
+                                    <p class="card-text"> {{ review.description | safe }} </p> </a>
                                         {% endif %}
                                         <hr />
                                         <p class="card-text text-muted h6">{{ review.publish_date }} <i
-                                                class="fa-regular fa-thumbs-up"></i> {{ review.number_of_upvotes }} <i
-                                                class="fa-regular fa-thumbs-down"></i> {{ review.number_of_downvotes }}
+                                                class="fa-regular fa-thumbs-up"></i> {{ review.number_of_upvotes| safe }} <i
+                                                class="fa-regular fa-thumbs-down"></i> {{ review.number_of_downvotes | safe }}
                                         </p>
 
                                        
