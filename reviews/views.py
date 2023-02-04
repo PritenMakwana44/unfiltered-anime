@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect
-from .models import Review
+from .models import Review, Comments
 from .models import WatchLater
 from .forms import CommentForm
 from .forms import ReviewForm
@@ -170,11 +170,10 @@ class ReviewDetail(View):
             )
 
 class DeleteCommentView(View):
-    def post(self, request, *args, **kwargs):
-        comment_id = request.POST.get('comment_id')
-        comment = Comment.objects.get(id=comment_id)
+    def post(self, request, comment_id, *args, **kwargs):
+        comment = Comments.objects.get(comment_id=comment_id)
         comment.delete()
-        return redirect('review_detail', comment.review.slug)
+        return redirect('review_detail', comment.review_id.slug)
 
 
 
