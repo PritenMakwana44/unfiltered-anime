@@ -1,6 +1,6 @@
 # Contents
 
-[Tank Mileage Tracker](#tank-mileage-tracker)
+[Unfiltered Anime](#unfiltered-anime)
 
 [UX](#ux)
 + [Purpose of the app](#purpose)
@@ -75,7 +75,7 @@
 + [Tutorials and inspiration](#Tutorials-and-inspiration)
 + [People](#People)
 
-# Tank Mileage Tracker
+# Unfiltered Anime
 
 [![showpiece home page](README_docs/screenshots/01_home.png)](https://tank.up.railway.app/)
 
