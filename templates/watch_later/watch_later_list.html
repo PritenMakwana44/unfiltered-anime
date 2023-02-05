@@ -1,9 +1,10 @@
+<!-- Extends from base.html -->
 {% extends "base.html" %}
-
+<!-- Block content -->
 {% block content %}
 <hr />
 <div class="jumbotron jumbotron-fluid">
-
+    <!-- Title and lead -->
     <div class="container">
         <div>
             <h1 class="display-4">My Watch List</h1>
@@ -12,76 +13,77 @@
     </div>
 </div>
 <hr />
-
-
 <div class="container-fluid">
     <div class="row">
-
         <!-- Blog Entries Column -->
-        
-                {% for watch_later in watch_later_list %}
-                
-                            <div class="card-body">
-                                <div class="image-container">
-                                    {% if "placeholder" in watch_later.review_id.featured_image.url %}
-                                    {% load static %}
-                                    <img class="card-img-top" src="{% static 'default.jpg' %}">
-                                    {% else %}
-                                    <img class="card-img-top" src=" {{ watch_later.review_id.featured_image.url }}">
-                                    {% endif %}
-                                    <div class="image-flash">
-                                        <p class="username">Username: {{ watch_later.review_id.username }}</p>
-                                    </div>
-                                </div>
-                                {% if watch_later.review_id.slug %}
-                                <a href="{% url 'review_detail' watch_later.review_id.slug %}" class="review-link">
-                                    <h2 class="class-title">{{ watch_later.review_id.title }}</h2>
-                                    <p class="card-text"> {{ watch_later.review_id.description }} </p> </a>
-                                        {% endif %}
-                                        <hr />
-                                        <p class="card-text text-muted h6">{{ review.publish_date }} <i
-                                                class="fa-regular fa-thumbs-up"></i> {{ watch_later.review_id.number_of_upvotes }} <i
-                                                class="fa-regular fa-thumbs-down"></i> {{ watch_later.review_id.number_of_downvotes }}
-                                        </p>
-                                        </h1>
-                                        <form action="{% url 'remove_from_watch_later' watch_later.watch_id %}" method="post">
-                                            {% csrf_token %}
-                                            <input type="hidden" name="review_id" value="{{ review.id }}" />
-                                            <button type="submit">Remove from Watch Later</button>
-                                        </form>
-
-
-
-                                   
-
-
-                                    </p>
-                            </div>
-                        </div>
-                    </div>
+        {% for watch_later in watch_later_list %}
+        <!-- Card body -->
+        <div class="card-body">
+            <!-- Image container -->
+            <div class="image-container">
+                {% if "placeholder" in watch_later.review_id.featured_image.url %}
+                {% load static %}
+                <img class="card-img-top" src="{% static 'default.jpg' %}">
+                {% else %}
+                <img class="card-img-top" src=" {{ watch_later.review_id.featured_image.url }}">
+                {% endif %}
+                <div class="image-flash">
+                    <p class="username">Username: {{ watch_later.review_id.username }}</p>
                 </div>
-                {% if forloop.counter|divisibleby:3 %}
             </div>
+            <!-- Card body contents -->
+            {% if watch_later.review_id.slug %}
+            <a href="{% url 'review_detail' watch_later.review_id.slug %}" class="review-link">
+                <h2 class="class-title">{{ watch_later.review_id.title }}</h2>
+                <p class="card-text"> {{ watch_later.review_id.description }} </p>
+            </a>
             {% endif %}
+            <hr />
+            <!-- Upvotes and downvotes icons -->
+            <p class="card-text text-muted h6">{{ review.publish_date }} <i class="fa-regular fa-thumbs-up"></i>
+                {{ watch_later.review_id.number_of_upvotes }} <i class="fa-regular fa-thumbs-down"></i>
+                {{ watch_later.review_id.number_of_downvotes }}
+            </p>
+            </h1>
+            <!-- Form with remove button -->
+            <form action="{% url 'remove_from_watch_later' watch_later.watch_id %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="review_id" value="{{ review.id }}" />
+                <button type="submit">Remove from Watch Later</button>
+            </form>
 
-            {% endfor %}
 
-            </div>
+
+
+
+
+            </p>
         </div>
     </div>
-    {% if is_paginated %}
-    <nav aria-label=" Page navigation">
-                <ul class="pagination justify-content-center">
-                    {% if page_obj.has_previous %}
-                    <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
-                    {% endif %}
-                    {% if page_obj.has_next %}
-                    <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+</div>
+</div>
+{% if forloop.counter|divisibleby:3 %}
+</div>
+{% endif %}
 
-                    {% endif %}
-                </ul>
-                </nav>
-                {% endif %}
-            </div>
+{% endfor %}
 
-            {%endblock%}
+</div>
+</div>
+</div>
+{% if is_paginated %}
+<nav aria-label=" Page navigation">
+    <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+        <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+        {% endif %}
+        {% if page_obj.has_next %}
+        <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+</div>
+
+{%endblock%}

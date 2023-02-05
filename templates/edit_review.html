@@ -1,27 +1,31 @@
-{% extends 'base.html' %} {% block content %}
-
+<!-- Extend from base.html -->
+{% extends 'base.html' %}
+<!-- Block content -->
+{% block content %}
+<!-- Load Crispy forms -->
 {% load crispy_forms_tags %}
 
-
+<!-- Edit Review form -->
 <form method="POST" action="{% url 'edit_review' review.slug %}" class="form mb-2" enctype="multipart/form-data">
     {% csrf_token %}
     {% for field in form %}
-        {% if field.name != 'image' %}
-            {{ field | as_crispy_field }}
-        {% else %}
-            {{ field }}
-        {% endif %}
+    {% if field.name != 'image' %}
+    {{ field | as_crispy_field }}
+    {% else %}
+    {{ field }}
+    {% endif %}
     {% endfor %}
 
     <hr>
+    <!-- Update Review button -->
     <div class="text-right">
         <button type="submit">Update Review</button>
     </div>
     <br>
+    <!-- Cancel button -->
     <div class="text-right">
         <button href="{% url 'home' %}">Cancel</button>
     </div>
 </form>
 
 {% endblock content %}
-

@@ -1,9 +1,10 @@
+<!-- Extends from base.html -->
 {% extends "base.html" %}
-
-
+<!-- Block content -->
 {% block content %}
 
-<hr />
+<hr>
+<!--Title and Lead -->
 <div class="jumbotron jumbotron-fluid header-image">
     <div class="container">
         <div>
@@ -12,69 +13,68 @@
         </div>
     </div>
 </div>
-<hr />
+<hr>
 
-        <!-- Blog Entries Column -->
-
-        {% for review in review_list %}
-
-        <div class="card-body">
-            <div class="image-container">
-                {% if "placeholder" in review.featured_image.url %}
-                {% load static %}
-                <img class="card-img-top" alt="default Pokemon image placeholder" src="{% static 'default.jpg' %}">
-                {% else %}
-                <img class="card-img-top" alt="User image placeholder" src="{{ review.featured_image.url }}">
-                {% endif %}
-                <div class="image-flash">
-                    <p class="username">
-                        Username: {{ review.username }}
-                    </p>
-                </div>
-            </div>
-            {% if review.slug %}
-            <a href="{% url 'review_detail' review.slug %}" class="review-link">
-                <h2 class="class-title">{{ review.title | safe }}</h2>
-                <div class="card-text">
-                    {{ review.description | safe }} 
-                </div>
-            </a>
-            {% endif %}
-            <hr />
-            <p class="card-text text-muted h6">{{ review.publish_date }} <i class="fa-regular fa-thumbs-up"></i>
-                {{ review.number_of_upvotes| safe }} <i class="fa-regular fa-thumbs-down"></i>
-                {{ review.number_of_downvotes | safe }}
+<!-- Blog Entries Column -->
+{% for review in review_list %}
+<!-- Card Body -->
+<div class="card-body">
+    <!-- Image container + content -->
+    <div class="image-container">
+        {% if "placeholder" in review.featured_image.url %}
+        {% load static %}
+        <img class="card-img-top" alt="default Pokemon image placeholder" src="{% static 'default.jpg' %}">
+        {% else %}
+        <img class="card-img-top" alt="User image placeholder" src="{{ review.featured_image.url }}">
+        {% endif %}
+        <div class="image-flash">
+            <p class="username">
+                Username: {{ review.username }}
             </p>
-
-
-            <form action="{% url 'add_to_watch_later' review.review_id %}" method="post">
-                {% csrf_token %}
-                <input type="hidden" name="review_id" value="{{ review.id }}" />
-                <button type="submit">Add to Watch Later</button>
-
-            </form>
         </div>
+    </div>
+    {% if review.slug %}
+    <a href="{% url 'review_detail' review.slug %}" class="review-link">
+        <h2 class="class-title">{{ review.title | safe }}</h2>
+        <div class="card-text">
+            {{ review.description | safe }}
+        </div>
+    </a>
+    {% endif %}
+    <hr>
+    <!-- Upvote and downvote icons -->
+    <p class="card-text text-muted h6">{{ review.publish_date }} <i class="fa-regular fa-thumbs-up"></i>
+        {{ review.number_of_upvotes| safe }} <i class="fa-regular fa-thumbs-down"></i>
+        {{ review.number_of_downvotes | safe }}
+    </p>
+
+    <!-- Watchlater button -->
+    <form action="{% url 'add_to_watch_later' review.review_id %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="review_id" value="{{ review.id }}">
+        <button type="submit">Add to Watch Later</button>
+
+    </form>
+</div>
 
 
-        {% if forloop.counter|divisibleby:3 %}
+{% if forloop.counter|divisibleby:3 %}
+
+{% endif %}
+
+{% endfor %}
+<!-- Pagination -->
+{% if is_paginated %}
+<nav aria-label=" Page navigation">
+    <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+        <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+        {% endif %}
+        {% if page_obj.has_next %}
+        <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
 
         {% endif %}
-
-        {% endfor %}
-
-        {% if is_paginated %}
-        <nav aria-label=" Page navigation">
-            <ul class="pagination justify-content-center">
-                {% if page_obj.has_previous %}
-                <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
-                {% endif %}
-                {% if page_obj.has_next %}
-                <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-
-                {% endif %}
-            </ul>
-        </nav>
-        {% endif %}
-
-
-        {%endblock%}
+    </ul>
+</nav>
+{% endif %}
+{%endblock%}

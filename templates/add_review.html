@@ -1,18 +1,17 @@
-{% extends 'base.html' %} {% block content %}
-
+<!-- Extends from base.html -->
+{% extends 'base.html' %} 
+<!-- Block content -->
+{% block content %}
+<!-- Load cirspy froms -->
 {% load crispy_forms_tags %}
-
-
+<!-- POST -->
 <form method="POST" enctype="multipart/form-data">
- 
-    <!-- Security token -->
     {% csrf_token %}
- 
-    <!-- Using the formset -->
+    <!-- Add review form -->
     {{ form|crispy }}
     {{ form.media }}
-    
     <br>
+    <!-- Submit button -->
     <button type="submit" value="Submit">Submit </button>
 </form>
 

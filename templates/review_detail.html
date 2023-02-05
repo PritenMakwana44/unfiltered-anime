@@ -1,7 +1,11 @@
-{% extends 'base.html' %} {% block content %}
-
+<!-- Extend base.html -->
+{% extends 'base.html' %}
+<!-- Block -->
+{% block content %}
+<!-- Load Cirspy forms -->
 {% load crispy_forms_tags %}
 
+<!-- Master head -->
 <div class="masthead">
     <div class="container">
         <div class="row g-0">
@@ -23,100 +27,94 @@
         </div>
     </div>
 </div>
-
+<!-- Container for card -->
 <div class="container">
     <div class="row">
         <div class="col card mb-4  mt-3 left  top">
-
-            <div class="card-body">
-                <!-- The review content goes inside the card-text. -->
-                <!-- Use the | safe filter inside the template tags -->
-                <h4>Description:</h4>
-                <p class="card-text ">
-                    {{ review.description | safe }}
-                </p>
-                <h4>Type:</h4>
-                <p class="card-text ">
-                    {{ review.type | safe }}
-                </p>
-                <br>
-                <h4>Release Year:</h4>
-                <p class="card-text ">
-                    {{ review.release_year | safe }}
-                </p>
-                <br>
-                <h4>Review:</h4>
-                <p class="card-text ">
-                    {{ review.review | safe }}
-                </p>
-                <br>
-                <h4>Favourite Character:</h4>
-                <p class="card-text ">
-                    {{ review.fav_character | safe }}
-                </p>
-
-
-
-                <div class="votes-div">
-                    <strong>
-                        {% if user.is_authenticated %}
-                        <form class="d-inline" action="{% url 'review_upvotes' review.slug %}" method="POST">
-                            {% csrf_token %}
-                            {% if upvoted %}
-                            <button type="submit" name="review_id" value="{{review.slug}}" class="btn-upvotes"><i
-                                    class="fa-sharp fa-solid fa-thumbs-up"></i></button>
-                            {% else %}
-                            <button type="submit" name="review_id" value="{{review.slug}}" class="btn-upvotes"><i
-                                    class="fa-regular fa-thumbs-up"></i></button>
-                            {% endif %}
-                        </form>
+            <!-- Card body -->
+            <div class="card-body"></div>
+            <h4>Description:</h4>
+            <p class="card-text ">
+                {{ review.description | safe }}
+            </p>
+            <h4>Type:</h4>
+            <p class="card-text ">
+                {{ review.type | safe }}
+            </p>
+            <br>
+            <h4>Release Year:</h4>
+            <p class="card-text ">
+                {{ review.release_year | safe }}
+            </p>
+            <br>
+            <h4>Review:</h4>
+            <p class="card-text ">
+                {{ review.review | safe }}
+            </p>
+            <br>
+            <h4>Favourite Character:</h4>
+            <p class="card-text ">
+                {{ review.fav_character | safe }}
+            </p>
+            <!-- Upvote/downvotes Div -->
+            <div class="votes-div">
+                <strong>
+                    {% if user.is_authenticated %}
+                    <form class="d-inline" action="{% url 'review_upvotes' review.slug %}" method="POST">
+                        {% csrf_token %}
+                        {% if upvoted %}
+                        <button type="submit" name="review_id" value="{{review.slug}}" class="btn-upvotes"><i
+                                class="fa-sharp fa-solid fa-thumbs-up"></i></button>
                         {% else %}
-                        <span class="text-secondary"><i class="fa-regular fa-thumbs-up"></i></span>
+                        <button type="submit" name="review_id" value="{{review.slug}}" class="btn-upvotes"><i
+                                class="fa-regular fa-thumbs-up"></i></button>
                         {% endif %}
-                        <span class="votes-number"> {{ review.number_of_upvotes }} </span>
-                    </strong>
-
-
-                    <br>
-
-                    <strong>
-                        {% if user.is_authenticated %}
-                        <form class="d-inline" action="{% url 'review_downvotes' review.slug %}" method="POST">
-                            {% csrf_token %}
-                            {% if upvoted %}
-                            <button type="submit" name="review_id" value="{{review.slug}}" class="btn-downvotes"><i
-                                    class="fa-sharp fa-solid fa-thumbs-down"></i></button>
-                            {% else %}
-                            <button type="submit" name="review_id" value="{{review.slug}}" class="btn-downvotes"><i
-                                    class="fa-regular fa-thumbs-down"></i></button>
-                            {% endif %}
-                        </form>
+                    </form>
+                    {% else %}
+                    <span class="text-secondary"><i class="fa-regular fa-thumbs-up"></i></span>
+                    {% endif %}
+                    <span class="votes-number"> {{ review.number_of_upvotes }} </span>
+                </strong>
+                <br>
+                <strong>
+                    {% if user.is_authenticated %}
+                    <form class="d-inline" action="{% url 'review_downvotes' review.slug %}" method="POST">
+                        {% csrf_token %}
+                        {% if upvoted %}
+                        <button type="submit" name="review_id" value="{{review.slug}}" class="btn-downvotes"><i
+                                class="fa-sharp fa-solid fa-thumbs-down"></i></button>
                         {% else %}
-                        <span><i class="fa-regular fa-thumbs-down"></i></span>
+                        <button type="submit" name="review_id" value="{{review.slug}}" class="btn-downvotes"><i
+                                class="fa-regular fa-thumbs-down"></i></button>
                         {% endif %}
-                        <span class="votes-number"> {{ review.number_of_downvotes }} </span>
-                    </strong>
-
-                </div>
-
-
-                <div class="row mt-4">
-                    {% if request.user.is_staff or request.user == review.username %}
-                    <a href="{% url 'edit_review' review.slug %}"><button type="button">Edit
-                            Review</button></a>
+                    </form>
+                    {% else %}
+                    <span><i class="fa-regular fa-thumbs-down"></i></span>
                     {% endif %}
-                </div>
-                <div class="row mt-4">
-                    {% if request.user.is_staff or request.user == review.username %}
-                    <a href="{% url 'review_delete' review.slug %}"><button type="button">Delete Review</button></a>
-
-                    {% endif %}
-                </div>
-
+                    <span class="votes-number"> {{ review.number_of_downvotes }} </span>
+                </strong>
 
             </div>
+
+            <!-- Edit Review button -->
+            <div class="row mt-4">
+                {% if request.user.is_staff or request.user == review.username %}
+                <a href="{% url 'edit_review' review.slug %}"><button type="button">Edit
+                        Review</button></a>
+                {% endif %}
+            </div>
+            <!-- Delete Review button -->
+            <div class="row mt-4">
+                {% if request.user.is_staff or request.user == review.username %}
+                <a href="{% url 'review_delete' review.slug %}"><button type="button">Delete Review</button></a>
+
+                {% endif %}
+            </div>
+
+
         </div>
     </div>
+</div>
 </div>
 <div class="row">
     <div class="col">
@@ -127,30 +125,28 @@
 
 <div class="row">
     <div class="col-md-8 card mb-4  mt-3 ">
+        <!-- Comments section -->
         <h3>Comments:</h3>
         <div class="card-body">
-            <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
             {% for comment in comments %}
             <div class="comments" style="padding: 10px;">
                 <p class="font-weight-bold">
-                    <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
                     {{ comment.username }}
                     <span class=" text-muted font-weight-normal">
-                        <!-- The comment's created date goes here -->
                         {{ comment.created_on }}
                     </span> wrote:
                 </p>
-                <!-- The body of the comment goes before the | -->
+                <!-- Comment body -->
                 {{ comment.body | linebreaks }}
                 {% if user.is_staff %}
-                <form method="post" style="display: inline-block;" action="{% url 'delete_comment' comment.comment_id %}">
+                <form method="post" style="display: inline-block;"
+                    action="{% url 'delete_comment' comment.comment_id %}">
                     {% csrf_token %}
                     <input type="hidden" name="comment_id" value="{{ comment.id }}">
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
                 {% endif %}
             </div>
-            <!-- Our for loop ends here -->
             {% endfor %}
         </div>
     </div>
@@ -166,9 +162,11 @@
             <h3>Leave a comment:</h3>
             <p>Posting as: {{ user.username }}</p>
             <form method="post" style="margin-top: 1.3em;">
+                <!-- Comment form loaded as crispy -->
                 {{ comment_form | crispy }}
                 {% csrf_token %}
                 <br>
+                <!-- Submit button -->
                 <button type="submit">Submit</button>
             </form>
             {% endif %}
