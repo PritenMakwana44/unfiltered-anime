@@ -3,7 +3,6 @@
 [Unfiltered Anime](#unfiltered-anime)
 
 [UX](#ux)
-+ [Purpose of the app](#purpose)
 + [User Stories](#user-stories)
 + [User Stories for next relese](#User-Stories-for-next-relese)
 + [Wireframes](#wireframes)
@@ -77,24 +76,20 @@
 
 # Unfiltered Anime
 
-[![showpiece home page](README_docs/screenshots/01_home.png)](https://tank.up.railway.app/)
+[![home page](readme/images/responsive.png)](https://unfiltered-anime.herokuapp.com/)
 
-Click [here](https://tank.up.railway.app/) to live site.  
+Live Site: [Click Here](https://unfiltered-anime.herokuapp.com/)
+Github: [Click Here](https://github.com/PritenMakwana44/unfiltered-anime)
+
+The purpose of this website is to allow users to write reviews on their favourite Anime. The website then allows other users to read the reviews, comment on reviews and add to the reviews to their Watch List so they can watch their new favourite anime film/show later.
+
+The Ultimate goal is to bring Anime fans togther, share their passion of Anime and find new Anime.
 
 ## UX
 ------
 
-### Purpose
-
-Tanks are known for using lots of fuel. If you were driving a tank, you would really like your mileage to be calculated with military precision. 
-
-Tank mileage tracker accurately tracks and logs business miles by car. User can record mileage on the go, he can also save historic record or calculate mileage for the future journeys. It can be used within UK, it enables users to search via postcode, first line of address or town. Records are being stored in database.
-
-The app conforms with mobile first approach - many of the design decisions were driven by the way the app looks and works for a user of a small mobile phone. 
-
 ### User Stories
-
-GitHub issues were used to record the user stories. The user stories were categorised into different priorities, as below from highest to lowest: "Should Have" "Must Have" "Could Have" "Might Have" "Won't Have"
+Github was used to manage User stories and bugs.
 
 #### User stories - visits app
 
