@@ -91,139 +91,59 @@ The Ultimate goal is to bring Anime fans togther, share their passion of Anime a
 ### User Stories
 Github was used to manage User stories and bugs.
 
-#### User stories - visits app
-
-The following user stories were satisfied by creation of visits app, including the features:
-- adding postcodes to the database as a journey
-- google maps button
-- saving journeys to database
-- edit journey function
-- view day report - displays the list of journeys for the day
-- button Drive - to submit to database when user is ready
-- unlimited amount of journeys can be saved for each day 
-- summary of miles for the day feature visible in drive and day view
-
-[#1](https://github.com/JoGorska/mileage-tracker/issues/1) As a driver I can add postcodes to a list for the current day so that see where I have been on the day
-
-[#2](https://github.com/JoGorska/mileage-tracker/issues/2) As a driver I can have a button to copy postcode and transfer me to google maps so that I can follow google maps without typing postcode second time
-
-[#3](https://github.com/JoGorska/mileage-tracker/issues/3) As a driver I can save each daily route so that do my monthly reporting for my employer database day postcodes miles
-
-[#13](https://github.com/JoGorska/mileage-tracker/issues/13) As a driver I can edit my route that I drove a few days ago so that I can correct any errors
-
-[#15](https://github.com/JoGorska/mileage-tracker/issues/15) As a driver I can have the route I drove automatically calculated so that I know how many miles I drove this day
-
-[#17](https://github.com/JoGorska/mileage-tracker/issues/17) As a frequent visitor  I can see the previous routes that I travelled so that I can have the record of my journeys
-
-[#22](https://github.com/JoGorska/mileage-tracker/issues/22) As a driver I can record lots of postcodes that I visited so that have whole of my journey saved
-
-[#74](https://github.com/JoGorska/mileage-tracker/issues/74) As a frequent user I can click on a button to get the maps so that I control when I am transferred to map
-
-[#86](https://github.com/JoGorska/mileage-tracker/issues/86) As a frequent user I can choose the date when adding the journey so that I only have to change it once when I update all my journeys for yesterday
-
-[#107](https://github.com/JoGorska/mileage-tracker/issues/107) As a regular user I can see the summary of miles for the day so that I can put this number in my report, I can check it against the clock on my car
-
-#### User stories - users app
-
-The following user stories were satisfied by creation of users app, including the features:
-- user ability to register as a user for this website
-- build in django feature that makes the user remained logged in, even when the website is closed and re opened again. 
-
-[#16](https://github.com/JoGorska/mileage-tracker/issues/16) As a returning visitor I can have my own profile so that data I put in is kept private
-
-[#20](https://github.com/JoGorska/mileage-tracker/issues/20) As a frequent visitor I can stay logged in so that I don't have to type in my login and password every time I visit the website
-
-#### User stories - traffic app
-
-The following user stories were satisfied by creation of traffic app, including the features:
-
-- adding new traffic alert for other drivers
-- display a list off traffic alerts to the users
-- "thank you" button allowing drivers to show appreciation for the traffic alert
-- "road clear" buttton allowing drivers to notify that the road has cleared (feature later removed due to testers raising concer that the use of the button is unclear and that google maps shows most up to date road cleard information)
-- traffic alert list displayed on home page as well as in drive view
-- pagination of traffic alerts on home page and displaying only 3 alerts on drive view limits long scrolling on mobile phone
-- information label by the little tank button explaining it is a button to "thank you"
-
-[#18](https://github.com/JoGorska/mileage-tracker/issues/18) As a drivers I can leave messages on the portal about problems on the road so that other drivers can avoid the area
-
-[#19](https://github.com/JoGorska/mileage-tracker/issues/19) As a driver I can see if other drivers have posted any messages about traffic issues in the area so that I could avoid getting stuck
-
-[#23](https://github.com/JoGorska/mileage-tracker/issues/23) As a driver I can say thank you in response to the message about traffic warning so that I can show my gratitude to fellow drivers
-
-[#28](https://github.com/JoGorska/mileage-tracker/issues/28) As a driver I can thank the driver that posted the traffic alert so that the other driver feels appreciated
-
-[#24](https://github.com/JoGorska/mileage-tracker/issues/24) As a driver I can mark traffic warning message as out of date so that other fellow drivers know that the traffic issue was resolved and the area is safe
-
-[#29](https://github.com/JoGorska/mileage-tracker/issues/29) As a driver I can mark the traffic alert - road clear so that other drivers know that the alert doesn't apply any more
-
-[#47](https://github.com/JoGorska/mileage-tracker/issues/47) As a driver I can see traffic alerts all the time, when I use app so that I know if there is anything new going on need to add traffic messages view to Drive view
-
-[#88](https://github.com/JoGorska/mileage-tracker/issues/88) As a frequent user I can see which messages I thanked for so that I don't have to click again to thank them
-
-[#106](https://github.com/JoGorska/mileage-tracker/issues/106) As a driver I can have my traffic messages signed with my first name so that my email is kept private
-
-[#108](https://github.com/JoGorska/mileage-tracker/issues/108) As a regular driver I can have only few newest messages when I type my postcodes so that limit endless scrolling
-
-[#64](https://github.com/JoGorska/mileage-tracker/issues/64) As a new user I can see some kind of description so that *understand the meaning of little tanks in the corner of the traffic alert
-
-#### User stories - general features
-
-The following user stories were satisfied, including the features:
-
-- accessibility including aria-labels
-- responsivness of all elements of the page, simple design easy to use on mobile
-- page deployed to heroku so it can be browsed by members of the public
-- fully responsive nav bar with hamburger button for mobile phone users
-- footer with short information about site owner
-- detailed readme including va
+#### User stories
 
 
-[#25](https://github.com/JoGorska/mileage-tracker/issues/25) As a visually impaired visitor I can the project to accommodate my needs so that I can use it with the help of my screen reader
+1. USER STORY: View Review list
+    - Review List is on home page for users to see all Reviews.
+    - If you click a review in the review list it opens up the review.
 
-[#26](https://github.com/JoGorska/mileage-tracker/issues/26) As a driver I can access the app on my phone so that I can use it while on the go
+2. USER STORY: Create Review
+    - There is a Create review button for any user to create Anime reviews.
+    - User must have account created to create a review.
+    - Once review is created it's shown on the Review list.
+3. USER STORY: Delete Review
+    - User can delete their own Reviews using a button.
+    - Button does not show unless user is creator of the review.
+4. USER STORY: Edit Review
+    - User can edit their own Reviews using a button.
+    - Button does not show unless user is creator of the review.
+5. USER STORY: Upvote/downvote review
+    - User can upvote or downvote any post
+    - Upvotes and downvotes numbers are shown in Review list. 
+    - One can not upvote and downvote the same post.
+6. USER STORY: Account Registration
+    - User must register an account.
+    - User gets access to many diffrent functions once registered such as adding reviews,comments and reviews to their review list.
+    - A user can login or logout as they please.
+    - A user can create as many accounts as they want.
+7. USER STORY: Comment On Review
+    - Users can Comment on any Review including their own.
+    - Function is used to create a feel of community. 
+8. USER STORY: View Comments
+    - Users can view anyones comments on any post.
+9. USER STORY: View upvote/downvotes
+    - Users can see number of Upvotes and downvotes on each review.
+10. USER STORY: Site pagitnation
+    - If user reaches 10 reviews on a page, they will then have pagitnation acitive which then gives them a next page button.
+11. USER STORY: Add review to watch later
+    - If user is logged in they can add any review to their Watch later list via a button.
+12. USER STORY: Watch later section view
+    - If user is logged in they get an extra tab on their Navigation bar called Watch later.
+    - The watch later button leads them to see all Anime reviews on another page.
+13. USER STORY: Manage Reviews
+    - If User is an admin then they can manage reviews via admin panel or certain features on webiste.
+    - They can delete or edit any review via public site or admin panel.
+14. USER STORY: Manage comments
+    - If User is an admin then they can manage comments via admin panel or limited features on website.
+    - They can delete any comment via either admin panel or site. 
+    - Future functionality will allow them to approve or disapprove any comment as all comments require authorisation.
+15. User Story: 404 error
+    - Future feature will have a 404 error website which allows them to navigate to the real site.
 
-[#27](https://github.com/JoGorska/mileage-tracker/issues/27) As a first time user I can browse to find this app publicly available so that use it and share it
+Here is a overall summary of my User stories:
 
-
-[#71](https://github.com/JoGorska/mileage-tracker/issues/71) As a mobile phone user I can hide nav bar in hamburger button so that the nav bar doesn't hide the website
-
-[#72](https://github.com/JoGorska/mileage-tracker/issues/72) As a new user I can see more details about the makers of the site in the footer so that I can find out more about them
-
-
-### User Stories for next relese
-
-The following user stories were marked as to be planned for next relese:
-
-#### User stories - Reporting app
-[#4](https://github.com/JoGorska/mileage-tracker/issues/4) As a driver I can have option to get an annual report so that submit my mileage to HRMC
-
-[#21](https://github.com/JoGorska/mileage-tracker/issues/21) As a worker I can have additional safety measures, when accessing the reporting so that if unauthorised person gets hold of my phone, when I am logged in, they don't have access to historic data
-
-#### User stories - Timesheet  app
-[#5](https://github.com/JoGorska/mileage-tracker/issues/5) As a worker I can upload my monthly schedule so that see when is my day off and what time I start work
-
-[#6](https://github.com/JoGorska/mileage-tracker/issues/6) As a worker I can have my schedule automatically applied to the future months so that I know what day off I will have in a few months time
-
-[#7](https://github.com/JoGorska/mileage-tracker/issues/7) As a worker I can print out monthly time sheets on the basis on my schedule so that submit monthly timesheets to myemployer
-
-[#8](https://github.com/JoGorska/mileage-tracker/issues/8) As a worker I can edit monthly time sheet report so that put down the extra days I was off so the report is accurate
-
-#### User stories - SMS communication app
-[#9](https://github.com/JoGorska/mileage-tracker/issues/9) As a worker I can receive SMS reminders so that I remember to switch the app on before starting the shift
-
-[#10](https://github.com/JoGorska/mileage-tracker/issues/10) As a worker I can receive sms reminders so that that monthly mileage report is due to be submitted to my employer
-
-#### User stories - Employer app
-[#11](https://github.com/JoGorska/mileage-tracker/issues/11) As a employer I can see the recorded mileage of each worker so that I could see if someone is behind with their mileage tracking
-
-[#12](https://github.com/JoGorska/mileage-tracker/issues/12) As a HR worker I can copy and paste reports so that I can easily update payroll system with the mileage for each employer
-
-#### User stories - Traffic app further development
-
-[#30](https://github.com/JoGorska/mileage-tracker/issues/30) As a site owner I can edit and delete the traffic alerts so that I can remove inappropriate content
-
-[#58](https://github.com/JoGorska/mileage-tracker/issues/58) As a driver I can see traffic alerts added by other drivers displayed on a map so that see any problems in my area
+![UserStories](readme/images/Userstories.png)
 
 ### Wireframes 
 However I have designed both desktop and mobile wireframes in the same time, but I have taken mobile first approach. This is an app for drivers and it has to look good and work well on a small mobile. 
