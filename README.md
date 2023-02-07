@@ -4,18 +4,24 @@
 
 [UX](#ux)
 + [User Stories](#user-stories)
-+ [User Stories for next relese](#User-Stories-for-next-relese)
++ [Agile](#Agile)
 + [Wireframes](#wireframes)
-+ [Agile Methodology](#Agile-Methodology)
+
 
 [Existing Features](#existing-features)
 + [Navbar and Footer](#Navbar-and-Footer)
 + [Home Page](#home-page)
-+ [Date Picker](#Date-Picker)
-+ [Drive Page](#drive-page)
-+ [Google APIs](#Google-APIs)
-+ [Form validation](#Form-validation)
-+ [Day report](#day-report)
++ [Sign Up](#sign-up)
++ [Sign In](#sign-in)
++ [User Login](#user-login)
++ [Admin Login](#admin-login)
++ [User Login](#user-login)
++ [User/Admin AddReview DeleteReview](#user-admin-addreview-deletereview)
++ [User/Admin WatchList](#user-admin-watchlist)
++ [User Review detail - user or non user](#user-review-detail-user-or-non-user)
++ [User Review detail - user on own post or admin on all](#User-review-detail-user-on-own-post-or-admin-on-all)
+
+
 
 [Future Features](#future-features)
 + [Reporting app](#Reporting-app)
@@ -141,275 +147,60 @@ Github was used to manage User stories and bugs.
 15. User Story: 404 error
     - Future feature will have a 404 error website which allows them to navigate to the real site.
 
-Here is a overall summary of my User stories:
+### Agile
 
 ![UserStories](readme/images/Userstories.png)
 
+Github issues was used to create the User stories. 
+Can find my Github issues here: [Cick Here](https://github.com/users/PritenMakwana44/projects/4/views/1).
+The sections are split into Todo, Inprogress, End user function done, Admin function done and future.
+
+
 ### Wireframes 
-However I have designed both desktop and mobile wireframes in the same time, but I have taken mobile first approach. This is an app for drivers and it has to look good and work well on a small mobile. 
 
-Wireframes created with [Balsamiq](https://balsamiq.com/wireframes/?gclid=Cj0KCQiAubmPBhCyARIsAJWNpiMYzrk_0rLzl3vgYKRLXwnX7rpqyQiUFdyt3xHGpRiHlZlozwO_pvcaAvUFEALw_wcB). The project was developed from initial wireframes and some modifications were made during the development process to assure better usability. 
+I used Balsamic to create my wireframes. I based my designs on a desktop site first then made them responsive after built.
 
-[Wireframes initial project](README_docs/wireframes/wireframes-v1.pdf)
-Initial design was focused on monthly reporting. I decided to change this do daily reporting and put monthly reporting on the list for the next relese.
+Main Page Design:  The main page is my home page for the review site.
+![Mainpage](readme/images/Mainpagelayout.png)
 
-The design included a long form for user to type addresses in, one after another. This idea was dropped, as it could run into a danger of loosing the data half way through the journey. I thought it is important that user saves data immediately after he types it in. 
+Sign-Up Page Design: This is the page for users to sign up.
+![Signup](readme/images/Signup.png)
 
-[Wireframes final version](README_docs/wireframes/wireframes-v2.pdf)
+Sign-In Page Design: This is the page for users to sign in.
+![Signip](readme/images/Signin.png)
 
-The new design includes only one pair of start and destination address. After typing them in, the user saves them and can continue typing next address. In the new design uer can look up a day report that gives him a list of his visits for the day. 
+User logged-in Home Page Design: Once the user logs in the nav bar changes. Here is the view.
+![Userloginhome](readme/images/UserloginHome.png)
 
-### Agile Methodology
+Admin logged-in Home Page Design: Once the admin logs in the nav bar changes. Here is the view.
+![Adminloginhome](readme/images/AdminloginHome.png)
 
-![Screenshot of the canban board](README_docs/canban-board.png)
+User/Admin WatchList Page Design: This is the view for the WatchList.
+![User-admin-addreview-editreview](readme/images/User-admin-WatchList.png)
 
-Github issues were used to create the User stories and group them according to MoSCoW prioritization technique. Link to the project with live issues can be found [here](https://github.com/JoGorska/mileage-tracker/projects/1). The issues are currently in two categories - done or for the next relese. 
+User Review detail user or non user Page Design: When the user or non logged in user clicks on a post this is the detail page.
+![User-Review-detail-user-or-non-user](readme/images/User-Review-detail-user-or-non-user.png)
 
-The issues were than closed automaticaly when the pull request was linked to the issue. 
+User Review detail user on own post or admin on all Page Design: This is what the page would look like when admin or user is logged in.
+![User-Review-detail-user-on-own-post-or-admin-on-all](readme/images/User-Review-detail-user-on-own-post-or-admin-on-all.png)
+
 
 ## Existing Features
 ------
 
 ### Navbar and Footer
+### Sign Up
+### Sign In
+### User Login
+### Admin Login
+### User Login
+### User/Admin AddReview DeleteRev### 
+### User/Admin WatchList
+### User Review detail - user or non user
+### User Review detail - user on own post or admin on all
 
-Navbar and footer has been copied from Bootstrap components and adjusted to the needs of the project
 
-I have used a beautiful nav bar with icons found in bootstrap examples in headers. Unfortunately this nav bar didn't have the feature to collapse into hamburger menu. I tried adding the bootstrap's classess to create the hamburger menu but this has changed the look of the nav bar. The design was quite unique and bootstrap classes have hindered the design. I removed the nav bar classes and left the nav bar styled as oryginally copied from bootstrap examples - headers.
 
-Since the app is designed for mobile phone users as a main group of clients - it needed a robust and well designed mobile nav bar. I decided to make a second nav bar for mobile phones only. I have used a different nav bar from bootstrap and I have used the same icons inside this design. This way the whole nav bar was collapsing into a hamburger button, which was much easier for mobile phone users. 
-
-Footer contains only minimal information about the author of the page. It stays at the bottom of the page. It does not contain any relevant information for the user and if it was made "sticky" it would just take up valuble space on mobile devices screen.
-
-### Home page 
-
-Home page consists of a hero with a short message with buttons and a little image reffering to Tank
-
-Second part of the home page is the list of traffic alerts. The list is generated dynamicly as per most current alert first. 
-
-Traffic alert design - I've chosen a simple card design from bootstrap. Since this is an app for drivers I have taken the mobile first aproach. This app needs to be comfortable to use by someone that is using mobile phone only. This led to a decision to display only maximum of 6 alerts per page. This way the mobile phone user will not have to scroll down too much, but there is an option to go to the next page. The rest of messages is paginated and is available under a little nav menu with page numbers.
-
-### Date Picker
-
-Date picker could have been really created as a seperate app. The date picker form is used for both drive and day view. This form enables user to choose the date once - at the beggining of the journey and than all subsequent journeys are added to the same date.
-
-If the user is updating historic records - he needs to choose date that he needs to update - type all postcodes in and than go to next date that he needs to update.
-
-I have asked myself qustion - Do I want to thoroughly validate date? Date picker is not validated in the way - it allows the users to put dates in the future or in the past or the current date. This is to allow the flexibility if the users want to record their future miles or the historic data. 
-
-I like the users to have the ability to add the dates in the past. The driver might have forgotted to add mileage daily and he will be forced to back date all entries.
-
-Another question is if I should validate if the user inputs date in the future. I would like to think that this option might be usefull. Some drivers are required to give their employers predicted distance to claim petrol advance. 
-
-I have made the decision not to validate the date at all and allow users to put dates in the future or in the past or choose the current date. The mileage - tracker app can have so many uses that it would be a shame to limit it's usage. 
-
-### Drive Page
-
-**Drive page is divided into 4 sections**
-1. Current journey
-2. form to input start and destination address
-3. List of journeys for the current date
-4. List of traffic messages
-
-**Workflow for Drive**
-Workflow version 1.
-App can be used every day for each journey and the driver can save each route as they go. 
-  - log in
-  - go to "drive"
-  - put in start and destination of the journey
-  - be transfered to map preview page
-  - add to database
-  - click to go to maps (google maps on mobile or google maps website on desktop)
-  - they arrive at destination
-  - to go to next location, they need to go back to the Tank website (they would still be on map preview)
-  - go back to "drive"
-  - put in start and destinaton
-
-This workflow required the driver to juggle beetween google maps and Tank website and the work app that tells him the next address. This workflow required too many steps, after speaking with my mentor Felippe Souza Alarcon I decided to rebuild the drive view completly. 
-
-I dropped the map view as it has not been bringing any value for a driver / mobile phone user. The driver needs an interactive map in a google maps app, not a display javascript map area inside a website. 
-
-Workflow version 2.
-App can be used for every day recording or recording past or future journeys:
-- log in
-- go to "drive"
-- put in start and destination of the jouurney
-- press "Drive!"
-- page refreshes, you can see the journey you just saved in orange fonts and a link to google maps, if you need to use your phone as sat nav
-- the form is set up with the start of journey so you only need to put in the next journey's address
-- press "Drive!" again for the next journey
-
-Because the Tank website forces the user to regular use every day during the whole shift and refres the whole page after each journey - it can be a good platform for:
-  - trafficc alerts
-  - in work messages
-  - tracking employer's progres in mileage reporting
-  - advertising (if app is to be used commercialy)
-
- **1. Current Journey**
-
- It is an orange div with orange borders and orange fonts and a little map icon.
-
-  This field displays only if user has come to drive after submitting another journey. The user gets data from the current journey variable.
-
-  The div also features an old google maps icon that was taken from [here](https://icons8.com/icon/32215/google-maps-old) The icon is linked up with the destination address of the current journey. 
-
-  The logic of this is that once the user types in start and destination address - the data gets saved in the database and he can now go to maps and drive (use google maps as sat nav). This works nicely on the mobile as user gets transferred to google maps with this address already inputed. This uses the geocoordinates to set the google maps up with destination. 
-
-  The icon is featured with little description available for large and medium screens. This was due to the fact that on larger screens the div is so long that this icon gets lost at the end of it with a big gap in between the description of the journey and the icon. The div is stretching full width of the container - just to unify it's styling with the accordeons below.
-
-  For mobile phones this description was not needed as the responsive grid pushes the icon right next to the table which makes it quite intuitive. 
-
-**2. Form to input start and destination address**
-
-The form input fields for start and destination address are the only visible elements of a Journey Form - that creates a journey object. The start and destination address can be typed by the user initialy, but than user needs to choose the address from a drop down box. The minute when the user clicks into drop down box - the javascript fetches google places API and gets the geocoordinates for this particular location.
-
-At every stage of filling in the form the user is guided with javascript validation and djnago form validation. (more about validation [here](#form-validation)) The rest of Journey Form is hidden from user - it contains geocoordinates that are added by javascipt. 
-
-Drive! button initializes a set of actions. First the form is validated. Once the form is valid the function fetches google directions API to get distance for the journey. Next the object gets saved into the database and user gets redirected back to drive view with the current journey displayed in orange on top. 
-
-An issue has been spotted by a small mobile phone user that when the user types in address and has the keyboard covering half of the screen - he doesn't actually see the drop down box. He has to click into the website to get the keyboard disapear than he can see the drop down box. This might be hiderance for first time users. I have added focus for start address in attempt to move the input field to the top of the screen, but it wasn't high enough for small phones. In second instance the red description generated by javascript validation should help the user to resolve the issue and find the drop down box.
-
-
-### Google APIs
-
-In this project I am using:
-1. Google Places 
-2. Google Directions
-3. Google Maps link
-
-**1. Google Places API**
-
-A javascript function on input shows a drop down box with google logo that contains default addreses based on input so far. The user needs to click into the chosen field in this drop down box. Once the user clicks it the function fetches the geocordinates of this particular location as well as full address. User can change his mind and edit the field, he gets a new dropdown box to choose the address and the function will fetch new geocoordinates. 
-
-Initialy the function was allowing to search by what is called in UK - "fist line of the address" meaning door nubmer, street and town. This has proved to be too much for the UK drivers. They are used to getting the directions by using postcode only. After extensive reading on the subject I have found documentation indicating what the object that I am fetching consists of. Initialy I have found this [article](https://atomizedobjects.com/blog/javascript/how-to-get-postcodes-from-google-places-and-google-maps/) it describes in details - what data I am getting from google places API and what is available. The code was written in react, but the article gave me more in depth understanding of the issue. I have found [Google documentation](https://developers.google.com/maps/documentation/places/web-service/supported_types#table3) that describes the types of data I can get from google places. 
-
-As the result of the above discovery I have changed the function initAutocomplete from "types: [address]" to 'regions: ['postal_code']'
-
-For reporting to the employee I had to make sure that the data I am collecting has postcode stored seperately. There is a way of obtaining postcode from the google places api result
-
-```
-    var place = autocomplete_a.getPlace();
-    var postcode = place.address_components[0].long_name
-    console.log(postcode)
-```
-Address_components object consists of a few objects that can be pulled out of it - like street name, name of the town and postcode as well. Unfortunately this method has proven not to be very efficient. It only worked if the user typed in the postcode in autocomplete box. If user typed the street number or name of the town, the postcode component did not apear at all. The results that I was getting were as below:
-```
-CM23 3DH
-58
-NN16 0AP
-Edgware Road
-```
-As a result of this problem I decided on a different solution - to search the results of google places and google directions full address field for a postcode using a regex. Even this method has proven to return some errors. I have found that Victoria Station in London is not returning postcode whether in google places or google directions. In this case the user will get full address in their report instead of the postcode. Those situations are rare and most drivers in the UK use postcodes constantly and residential addresses, rather than train stations. 
-
-**2. Google Directions API**
-
-A python function takes the geocoordinates from the form and gets the distance between two points on the map. Google Directions returns me a full address of start and destination in a slight different form than google Places. If I search google places for a town I get for examle "Northampton", while google directions would be a full address with street and postcode for a geocoordinates. This means that for the daily report I have a way of obtaining postcodes - either from googe places or google directions version of the full address. 
-
-Google directions returns also the distance between two points by car. The car drive mode is default. The returned distance is in km, I have put a function to change to miles and round up to one decimal place. 
-
-From google direction I can also get the time it will take to travel, but I didn't think this feature would be usefull for me. 
-
-**3. Google maps link**
-
-For mobile phone users it is very important they don't have to type the destination address twice - once in the Tank app and second time in their sat nav. I am assuming most mobile phone users use google maps for their journeys. I have found how to create URL for the user to be transfered to google maps with the direction pre set for him. I am making the user of geocoordinates provided by Google Places API and I build the url using a variables with geocoordinates.
-
-
-### Form validation
-
-Forms validation:
-1. HTML validation using HTML atributes
-2. Javascript validation (only in Drive view)
-3. Django form validation
-
-The drive view is the most complex part of the app and the most important one. I have focused on this view to make sure I have various levels of validation to help the user to submit the data correctly. Drive view consists of 2 input fields for start and destination adress. For correct functioning of both functions that are fetching google API user needs to input data in a specific way. The form validation guides the user through the process. 
-
-In the next release some features of this validation can be added to other forms especially the User profile view. 
-
-**1. HTML validation**
-
-Some input fields are given attribute "required" to prevent the user from submitting the empty form.
-
-**2. javascript validation for Drive**
-![input boxes showing javascript validation](README_docs/screenshots/features_form_javascript.png)
-
-I have added Javascript function detecting input on the start address and destination address fields. The function adds and removes classes showing the user in red and green if the field is filled in correctly. 
-
-The green text explaining "ok" status for both fields is added by the function handling google places api query. Once the query is completed and data is submited to the fields this function adds and removes classes so it shows user in green that geocoodinates have been found. 
-
-**3. Django validation for Drive (AddJourney)**
-![error message displayed after validation has failed](README_docs/screenshots/features_form_django.png)
-
-If user decides to ignore the above messages from JavaScript, the form gets submitted with some missing data, but django form validation function prevents the item to be submitted to database with missing data. 
-
-The user gets displayed a message describing the error.
-
-The most common error will be submitting form with geocoordinates missing. I decided that I would preffer user not to see geocoordinates as it would be too much information for a little phone application. Geocoordinates would need to be inside not editable input elements anyway. 
-
-I am adding detailed message describing what to do if the drop down input field from google places api doesn't show up. I am also clearing the form data - hopefuly when user types both addresses again, he understands how to do this correctly. 
-
-### Report
-
-Reporting app is divided to three main functionalities:
-- display one day report, this is displayed as accordion with buttons pointing user to edit or delete the journey
-- display a period report - this is displayed as table 
-- excel exporting - exports choosen period to mileage
-
-### Traffic Alert
-
-The Traffic Alert app allows the users to add traffic alerts for other drivers to see. I have added a form that submits new traffic alerts to the database. The user can also interact with the traffic alerts - to add "thank you" by clicking a tank icon. 
-
-In my current employment the office uses internal in app messages to describe issue on the road for example "by the big Mcdonadls in Kettering" This explains the location very clearly for locals and co workers. The user can type the location of the incident in such descriptive way so it is understandable. 
-
-The traffic alerts are displayed as cards stacked in rows. The cards contain only minimal information - category and location. They need to be small to make them easy to view in a small mobile. There is availibity to see further details of the traffic alert by clicking into the card and a modal with details will show up. 
-
-### Users App
-
-User - build in django user model enables users to register log in and log out. 
-
-I have added a User Profile model and form to enable user to give us more data about themselves. This data will be useful for reporting the mileage to the employer. The profile asks about their employer details and email addres.
-
-Another idea is to add a special Drive Home button for the user - once the user has submitted their private address in their user profile. 
-
-## Future Features 
-------
-
-### Reporting app
-
-Having the visits data in the database allows the future development of various reports
-- month
-- week
-- annual
-
-This could enable driver easy monthly reporting of mileage to the employer or annual report to HMRC
-
-Havig the visits data bears some risk as well. In the report the user can obtain a list of people's addresses including their house number and geolocation. The user stays logged all the time, so if the phone is stolen or lost - someone could access the data on the website. It would be advisable to secure the reporting app with additional safety features. Accessing a few addresses in current day view seems smaller risk, than accessing a full month or year worth of private addresses. Having that said, it might be a safer to get the user to type in password at least once a day for accessing the app.
-
-### Timesheet app
-
-Workers that have rolling shift patterns for their time shedule would find a feature of some kind of timesheets quite usefull. 
-- timesheets reporting - reporting to the employer the work time
-- calendar view - for the worker to check when the next shift is due - having a 4 weekly rolling shedule makes it difficult to make any appointments, as each week is different. The calendar view - that would include the shift pattern would be a great help. 
-- adding abscences and overtime - for the purpose of time sheets reporting to the employer - the app can be set to communicate with visits app - to check if the user has been driving that day and what time. This way app could make suggestions if the worker was off or if he has done overtime.
-
-### SMS communication app
-
-Some drivers might find it helpfull to receive text message reminders to switch their app on when their shift is due to start. Another usefull feature would be to receive sms reminders that monthly / annual report is due.
-
-### Employer app
-
-This app can be very helpful for employers that need to have up to date view of their employees mileage. The employer could see if the workers are keeping their mileage records up to date. There is also a wide area of developing various reports that would help the employer to upload the data for payroll.
-
-### Traffic app further development
-
-Further development of Traffic Alerts can include allowing the site owner to moderate the Traffic Alerts posted by the drivers and remove inapropriate content. 
-
-Another major change that many drivers might find interesting is to allow driver to point on the map where the traffic issue has occured, instead of typing the description. 
-
-The next step would be displaying the traffic alerts in a minature map for other drivers to see as markers or markers clusters. 
-
-### Google AdSense
-The owner of the site will be charged by Google Places API and google Directions API depending on the usage of those APIs. If the cost proves to be great - it might be advisable to look into google AdSense and add some small fields for google ads. There should be also a further option for the users to have paid subscription without ads. 
-
-The google ads connected with cars are quite well priced and due to the repetetive nature of typing the mileage in the Drive page gets refreshed regulary, therefore even one user would generate lots of views of the ads. 
 
 ## Technologies Used
 ------

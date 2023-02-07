@@ -35,7 +35,7 @@
             {% if watch_later.review_id.slug %}
             <a href="{% url 'review_detail' watch_later.review_id.slug %}" class="review-link">
                 <h2 class="class-title">{{ watch_later.review_id.title }}</h2>
-                <p class="card-text"> {{ watch_later.review_id.description }} </p>
+                <p class="card-text"> {{ watch_later.review_id.description | safe }} </p>
             </a>
             {% endif %}
             <hr />
