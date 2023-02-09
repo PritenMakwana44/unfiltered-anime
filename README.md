@@ -6,20 +6,34 @@
 + [User Stories](#user-stories)
 + [Agile](#agile)
 + [Wireframes](#wireframes)
-
-
+    + [Main Page](#main-page)
+    + [Sign-Up Page](#sign-up-page)
+    + [Sign-In Page](#sign-in-page)
+    + [User logged-in Home Page](#user-logged-in-home-page)
+    + [Admin logged-in Home Page](#admin-logged-in-home-page)
+    + [User or Admin watchList page](#user-or-admin-watchlist-page)
+    + [User Review detail user or non user Page](#user-review-detail-user-or-non-user-page)
+    + [User Review detail own post or admin Page](#user-review-detail-own-post-or-admin-page)
 + [Existing Features](#existing-features)
-    + [Navbar and Footer](#Navbar-and-Footer)
-    + [Home Page](#home-page)
-    + [Sign Up](#sign-up)
+    + [Navbar](#navbar)
+    + [Review detail](#review-detail)
     + [Sign In](#sign-in)
-    + [User Login](#user-login)
-    + [Admin Login](#admin-login)
-    + [User Login](#user-login)
-    + [User/Admin AddReview DeleteReview](#user-admin-addreview-deletereview)
-    + [User/Admin WatchList](#user-admin-watchlist)
-    + [User Review detail - user or non user](#user-review-detail-user-or-non-user)
-    + [User Review detail - user on own post or admin on all](#User-review-detail-user-on-own-post-or-admin-on-all)
+    + [Sign Up](#sign-up)
+    + [Sign Out](#sign-out)
+    + [Log in Alert](#log-in-alert)
+    + [User Nav](#user-nav)
+    + [Review List](#review-list)
+    + [Add Review](#add-review)
+    + [Watch Later List](#watch-later-list)
+    + [Review detail admin or user own](#review-detail-admin-or-user-own)
+    + [Upvote or Downvote](#upvote-or-downvote)
+    + [Comments](#comments)
+    + [Comments as an admin](#comments-as-an-admin)
+    + [Comment approval](#comment-approval)
+    + [Footer](#footer)
+    + [Login as admim](#login-as-admin)
+    + [Admin center](#admin-center)
+
 
 
 
@@ -92,7 +106,6 @@ The purpose of this website is to allow users to write reviews on their favourit
 The Ultimate goal is to bring Anime fans togther, share their passion of Anime and find new Anime.
 
 ## UX
-------
 
 ### User Stories
 Github was used to manage User stories and bugs.
@@ -179,21 +192,22 @@ Once the user logs in the nav bar changes. Here is the view.
 Once the admin logs in the nav bar changes. Here is the view.
 ![Adminloginhome](readme/images/wireframe/AdminloginHome.png)
 
-### User/Admin WatchList Page:
+### User or Admin watchList page:
 This is the view for the WatchList.
-![User-admin-addreview-editreview](readme/images/wireframe/User-admin-WatchList.png)
+![User-or-admin-watchlist](readme/images/wireframe/User-admin-WatchList.png)
 
 ### User Review detail user or non user Page:
 When the user or non logged in user clicks on a post this is the detail page.
 ![User-Review-detail-user-or-non-user](readme/images/wireframe/User-Review-detail-user-or-non-user.png)
 
-### User Review detail user on own post or admin on all Page:
+### User Review detail own post or admin Page
 This is what the page would look like when admin or user is logged in.
-![User-Review-detail-user-on-own-post-or-admin-on-all](readme/images/wireframe/User-Review-detail-user-on-own-post-or-admin-on-all.png)
+![User-Review-detail-own-post-or-admin-Page](readme/images/wireframe/user-review-detail-own-post-or-admin.png)
+
 
 
 ## Existing Features
-------
+
 
 ### Navbar
 For anyone who comes into the site this is the default navbar. The navbar includes a sign in and sign out function.
@@ -248,13 +262,13 @@ Each review has a add to watch list button for a logged in user. This adds the r
 ![watch-list-2](readme/images/features/watch-list-2.png)
 
 
-### Review detail admin/user own
+### Review detail admin or user own
 If an admin logs in they get the option in the review post itself to edit or delete a review. If a user is logged in then they can edit or delete their own post only.
 ![review-detail-admin-user-1](readme/images/features/review-detail-admin-or-user-own-1.png)
 ![review-detail-admin-user-2](readme/images/features/review-detail-admin-or-user-own-2.png)
 
 
-### Upvote/Downvote
+### Upvote or Downvote
 If a user is logged in then they can either upvote or downvote. They can't do both.
 
 ![upvote/downvote](readme/images/features/upvote-downvote-icons.png)
@@ -281,7 +295,7 @@ The footer has been kept basic just my trademark as for who created the site.
 ![footer](readme/images/features/footer.png)
 
 
-### Login as admim
+### Login as admin
 If an admin is logged in. They get access to a diffrent nav bar with access to the admin panel.
 ![review-admin-login](readme/images/features/review-login-admin.png)
 
