@@ -4,22 +4,22 @@
 
 [UX](#ux)
 + [User Stories](#user-stories)
-+ [Agile](#Agile)
++ [Agile](#agile)
 + [Wireframes](#wireframes)
 
 
-[Existing Features](#existing-features)
-+ [Navbar and Footer](#Navbar-and-Footer)
-+ [Home Page](#home-page)
-+ [Sign Up](#sign-up)
-+ [Sign In](#sign-in)
-+ [User Login](#user-login)
-+ [Admin Login](#admin-login)
-+ [User Login](#user-login)
-+ [User/Admin AddReview DeleteReview](#user-admin-addreview-deletereview)
-+ [User/Admin WatchList](#user-admin-watchlist)
-+ [User Review detail - user or non user](#user-review-detail-user-or-non-user)
-+ [User Review detail - user on own post or admin on all](#User-review-detail-user-on-own-post-or-admin-on-all)
++ [Existing Features](#existing-features)
+    + [Navbar and Footer](#Navbar-and-Footer)
+    + [Home Page](#home-page)
+    + [Sign Up](#sign-up)
+    + [Sign In](#sign-in)
+    + [User Login](#user-login)
+    + [Admin Login](#admin-login)
+    + [User Login](#user-login)
+    + [User/Admin AddReview DeleteReview](#user-admin-addreview-deletereview)
+    + [User/Admin WatchList](#user-admin-watchlist)
+    + [User Review detail - user or non user](#user-review-detail-user-or-non-user)
+    + [User Review detail - user on own post or admin on all](#User-review-detail-user-on-own-post-or-admin-on-all)
 
 
 
@@ -99,7 +99,6 @@ Github was used to manage User stories and bugs.
 
 #### User stories
 
-
 1. USER STORY: View Review list
     - Review List is on home page for users to see all Reviews.
     - If you click a review in the review list it opens up the review.
@@ -156,50 +155,140 @@ Can find my Github issues here: [Cick Here](https://github.com/users/PritenMakwa
 The sections are split into Todo, Inprogress, End user function done, Admin function done and future.
 
 
-### Wireframes 
+## Wireframes 
 
 I used Balsamiq to create my wireframes. I based my designs on a desktop site first then made them responsive after built.
 
-Main Page Design:  The main page is my home page for the review site.
-![Mainpage](readme/images/Mainpagelayout.png)
+### Main Page
+The main page is my home page for the review site.
+![Mainpage](readme/images/wireframe/Mainpagelayout.png)
 
-Sign-Up Page Design: This is the page for users to sign up.
-![Signup](readme/images/Signup.png)
+### Sign-Up Page: 
+This is the page for users to sign up.
+![Signup](readme/images/wireframe/Signup.png)
 
-Sign-In Page Design: This is the page for users to sign in.
-![Signip](readme/images/Signin.png)
+### Sign-In Page:
+This is the page for users to sign in.
+![Signip](readme/images/wireframe/Signin.png)
 
-User logged-in Home Page Design: Once the user logs in the nav bar changes. Here is the view.
-![Userloginhome](readme/images/UserloginHome.png)
+### User logged-in Home Page:
+Once the user logs in the nav bar changes. Here is the view.
+![Userloginhome](readme/images/wireframe/UserloginHome.png)
 
-Admin logged-in Home Page Design: Once the admin logs in the nav bar changes. Here is the view.
-![Adminloginhome](readme/images/AdminloginHome.png)
+### Admin logged-in Home Page:
+Once the admin logs in the nav bar changes. Here is the view.
+![Adminloginhome](readme/images/wireframe/AdminloginHome.png)
 
-User/Admin WatchList Page Design: This is the view for the WatchList.
-![User-admin-addreview-editreview](readme/images/User-admin-WatchList.png)
+### User/Admin WatchList Page:
+This is the view for the WatchList.
+![User-admin-addreview-editreview](readme/images/wireframe/User-admin-WatchList.png)
 
-User Review detail user or non user Page Design: When the user or non logged in user clicks on a post this is the detail page.
-![User-Review-detail-user-or-non-user](readme/images/User-Review-detail-user-or-non-user.png)
+### User Review detail user or non user Page:
+When the user or non logged in user clicks on a post this is the detail page.
+![User-Review-detail-user-or-non-user](readme/images/wireframe/User-Review-detail-user-or-non-user.png)
 
-User Review detail user on own post or admin on all Page Design: This is what the page would look like when admin or user is logged in.
-![User-Review-detail-user-on-own-post-or-admin-on-all](readme/images/User-Review-detail-user-on-own-post-or-admin-on-all.png)
+### User Review detail user on own post or admin on all Page:
+This is what the page would look like when admin or user is logged in.
+![User-Review-detail-user-on-own-post-or-admin-on-all](readme/images/wireframe/User-Review-detail-user-on-own-post-or-admin-on-all.png)
 
 
 ## Existing Features
 ------
 
-### Navbar and Footer
-### Sign Up
+### Navbar
+For anyone who comes into the site this is the default navbar. The navbar includes a sign in and sign out function.
+![navbar](readme/images/features/review-home-signup-signin.png)
+
+
+### Review detail
+Here is the view when you click on a post when your not logged in.
+![review-detail-1](readme/images/features/review-detail-1.png)
+![review-detail-2](readme/images/features/review-detail-2.png)
+
+
 ### Sign In
-### User Login
-### Admin Login
-### User Login
-### User/Admin AddReview DeleteRev### 
-### User/Admin WatchList
-### User Review detail - user or non user
-### User Review detail - user on own post or admin on all
+Here is the sign in page.
+![signin](readme/images/features/signin.png)
 
 
+### Sign Up
+Here is the sign up page.
+![signup](readme/images/features/signup.png)
+
+
+### Sign Out
+Here is the sign out page.
+![signout](readme/images/features/signout.png)
+
+
+### Log in Alert.
+Here is what the alert looks like when you log in. 
+![login-alert](readme/images/features/logged-in-alert.png)
+
+
+### User Nav
+Here is what the Nav bar looks like when your logged in.
+![user-login](readme/images/features/user-nav.png)
+
+
+### Review List
+Here is the list of reviews on the home page under the navbar.
+![review-list](readme/images/features/review-list.png)
+
+
+### Add Review
+Here is what it looks like for a logged in user to add a review. Only logged in users can do this.
+![Add-review-1](readme/images/features/add-review-1.png)
+![Add-review-2](readme/images/features/add-review-2.png)
+
+
+### Watch Later List
+Each review has a add to watch list button for a logged in user. This adds the review to the watch later list. There is a remove from watch later button each review. It removes the review from the watch later list. Users also are able to open the review by clicking the post too. 
+![watch-list-1](readme/images/features/watch-list-1.png)
+![watch-list-2](readme/images/features/watch-list-2.png)
+
+
+### Review detail admin/user own
+If an admin logs in they get the option in the review post itself to edit or delete a review. If a user is logged in then they can edit or delete their own post only.
+![review-detail-admin-user-1](readme/images/features/review-detail-admin-or-user-own-1.png)
+![review-detail-admin-user-2](readme/images/features/review-detail-admin-or-user-own-2.png)
+
+
+### Upvote/Downvote
+If a user is logged in then they can either upvote or downvote. They can't do both.
+
+![upvote/downvote](readme/images/features/upvote-downvote-icons.png)
+
+
+### Comments
+Here is what the comments section looks like for any logged in user. If you comment on a post as a user it then gets sent to the admin for authorisation.
+![comment-section](readme/images/features/comments-section.png)
+![comments-auth](readme/images/features/comment-auth-alert.png)
+
+
+### Comments as an admin
+Here is what the comments section looks like as an admin. The extra feature is that admin can delete any comment from any user as feature to make sure all comments are appropriate.
+![admin-comment](readme/images/features/admin-comment.png)
+
+
+### Comment approval
+Here is where the admin can approve comments. This is in the admin panel.
+![admin-panel-comments](readme/images/features/admin-center-comments.png)
+
+
+### Footer
+The footer has been kept basic just my trademark as for who created the site.
+![footer](readme/images/features/footer.png)
+
+
+### Login as admim
+If an admin is logged in. They get access to a diffrent nav bar with access to the admin panel.
+![review-admin-login](readme/images/features/review-login-admin.png)
+
+
+### Admin center
+Here is where the admin can make any changes they would like within the admin panel.
+![admin-panel](readme/images/features/admin-center-menu.png)
 
 
 ## Technologies Used
