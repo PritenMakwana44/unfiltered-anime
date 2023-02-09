@@ -158,7 +158,7 @@ The sections are split into Todo, Inprogress, End user function done, Admin func
 
 ### Wireframes 
 
-I used Balsamic to create my wireframes. I based my designs on a desktop site first then made them responsive after built.
+I used Balsamiq to create my wireframes. I based my designs on a desktop site first then made them responsive after built.
 
 Main Page Design:  The main page is my home page for the review site.
 ![Mainpage](readme/images/Mainpagelayout.png)
