@@ -11,8 +11,9 @@
 + [Agile](#agile)
 + [CRUD Functionality](#crud-functionality)
 + [Colors](#colors)
-+ [Fonts](fonts)
++ [Fonts](#fonts)
 + [Structure](#structure)
++ [Datebase](#database)
 + [Wireframes](#wireframes)
     + [Main Page](#main-page)
     + [Sign-Up Page](#sign-up-page)
@@ -51,6 +52,18 @@
 + [Functionality and Compatibility Testing](#functionality-and-compatibility-testing)
 + [Code Validator Testing](#code-validator-testing)
 + [SEO Testing](#seo-testing)
++ [Manual Testing](#manual-testing)
+
+
+[Bugs](#bugs)
++ [Fixed Bugs](#fixed-bugs)
++ [Unfixed Bugs](#unfixed-bugs)
+
+[Deployment](#deployment)
+
+[References](#references)
+
+[Acknowledgements](#acknowledgements)
 
 
 
@@ -167,6 +180,29 @@ Secondary colors: Default Grey
 
 ### Fonts
 Main font: Fredoka One
+
+### Structure
+
+The goal of the site structure is to be basic, clean and simple. The structure should be easy to navigate.
+
+Site Structure:
+
+    1. Home page which includes list of reviews
+    2. Sign up page
+    3. Sign in page
+    4. Sign out page
+    5. Watchlist page
+    6. Add review page (form)
+    7. edit review page (form)
+    8. Review detail page
+
+### Database
+
+Below is my Database model which was designed before putting togther this project. Ideally this would be the schema which would work most ideally. In reality this model didn't work as expected but it provided space for growth. In the future this schema will provide to be useful to make the database as clean as possible. The backend uses Django and ElephantSQL.
+
+![models](readme/images/models.jpeg)
+
+
 
 ## Wireframes 
 
@@ -310,6 +346,9 @@ Here is where the admin can make any changes they would like within the admin pa
     3. Be able to add friends and direct message.
     4. Better account management i.e email address and profile picture.
     5. Crunchy roll Anime streaming site integration.
+    6. Social Media integration
+    7. Anime merchandise shop section
+    8. Anime social media platform - Stories/shorts
 
 # Technologies Used
 ### Technologies and Programs Used:
@@ -335,11 +374,16 @@ Here is where the admin can make any changes they would like within the admin pa
 + Languages used
     + HTML5
     + CSS3
-    + Javascript]
+    + Javascript
     + Python
     + Django
 + Gitpod - IDE
 + Google - Research platform.
++ Add-ons:
+    + Crispy Forms
+    + Psycopg2 
+    + Summernote
+    + AllAuth
 
 # Testing
 ## Functionality and Compatibility Testing
@@ -400,3 +444,112 @@ SEO watchlist desktop testing result:
 
 SEO watchlist mobile testing result:
 ![seo-watchlist-mobile](readme/images/testing/seo-watchlist-mobile.png)
+
+## Manual testing
+
+Below are the user stories and the manual testing outcomes for each:
+
+
+1. USER STORY: View Review list:
+
+    Action:
+    Expected Result:
+    Actual Result:
+
+2. USER STORY: Create Review
+
+    Action:
+    Expected Result:
+    Actual Result:
+
+3. USER STORY: Delete Review
+    
+    Action:
+    Expected Result:
+    Actual Result:
+
+4. USER STORY: Edit Review
+   
+    Action:
+    Expected Result:
+    Actual Result:
+
+5. USER STORY: Upvote/downvote review
+    
+    Action:
+    Expected Result:
+    Actual Result:
+
+6. USER STORY: Account Registration
+    
+    Action:
+    Expected Result:
+    Actual Result:
+
+7. USER STORY: Comment On Review
+    
+    Action:
+    Expected Result:
+    Actual Result:
+
+8. USER STORY: View Comments
+    
+    Action:
+    Expected Result:
+    Actual Result:
+
+9. USER STORY: View upvote/downvotes
+   
+    Action:
+    Expected Result:
+    Actual Result:
+
+10. USER STORY: Site pagitnation
+    
+    Action:
+    Expected Result:
+    Actual Result:
+
+11. USER STORY: Add review to watch later
+   
+    Action:
+    Expected Result:
+    Actual Result:
+
+12. USER STORY: Watch later section view
+   
+    Action:
+    Expected Result:
+    Actual Result:
+
+13. USER STORY: Manage Reviews
+    
+    Action:
+    Expected Result:
+    Actual Result:
+
+14. USER STORY: Manage comments
+
+    Action:
+    Expected Result:
+    Actual Result:
+
+15. User Story: 404 error
+    
+    Action:
+    Expected Result:
+    Actual Result:
+
+# Bugs
+
+## Fixed Bugs
+
+## Unfixed Bugs
+
+
+
+# Deployment
+
+# References
+
+# Acknowledgements
