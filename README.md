@@ -2,9 +2,17 @@
 
 [Unfiltered Anime](#unfiltered-anime)
 
+[Project Goals](#project-goals)
++ [User Goals](#user-goals)
++ [Site Owner Goals](#site-owner-goals)
+
 [UX](#ux)
 + [User Stories](#user-stories)
 + [Agile](#agile)
++ [CRUD Functionality](#crud-functionality)
++ [Colors](#colors)
++ [Fonts](fonts)
++ [Structure](#structure)
 + [Wireframes](#wireframes)
     + [Main Page](#main-page)
     + [Sign-Up Page](#sign-up-page)
@@ -58,12 +66,29 @@ The purpose of this website is to allow users to write reviews on their favourit
 
 The Ultimate goal is to bring Anime fans togther, share their passion of Anime and find new Anime.
 
+# Project Goals
+
+## User Goals
+
+- To be able to create an account
+- To be able to add Anime reviews
+- To be able to comment on all reviews
+- To be able to add reviews to watch later list
+- To be able to read others reviews
+- To be able to upvote or downvote reviews
+
+## Site Owner Goals
+
+- To provide a platform in which users can share anime reviews
+- To provide a platform which allows growth of an anime community
+- To provide a platform where users can have a list of anime they can remmeber to watch later.
+
+
 ## UX
 
-### User Stories
-Github was used to manage User stories and bugs.
-
 #### User stories
+
+Github was used to manage User stories and bugs.
 
 1. USER STORY: View Review list
     - Review List is on home page for users to see all Reviews.
@@ -114,12 +139,34 @@ Github was used to manage User stories and bugs.
 
 ### Agile
 
+
 ![UserStories](readme/images/Userstories.png)
 
 Github issues was used to create the User stories. 
 Can find my Github issues here: [Cick Here](https://github.com/users/PritenMakwana44/projects/4/views/1).
 The sections are split into Todo, Inprogress, End user function done, Admin function done and future.
 
+### CRUD Functionality
+
+Users:
+Create - Users can create accounts, reviews, watchlist entries, comments
+Read - Users can read reviews, watchlist entires, comments
+Update - Users can update reviews, watchlist entries
+Delete - Users can delete reviews, watchlist entries
+
+Admins:
+Create - Admins can create accounts, reviews, watchlist entries, comments
+Read - Admins can read accounts, reviews, watchlist entries, comments
+Update - Admins can update accounts, reviews, watchlist entries, comments
+Delete -  Admins can delete accounts, reviews, watchlist entries, comments
+
+### Colors
+Background colors: White, #F9FAFC
+Main colors: Default Orange
+Secondary colors: Default Grey
+
+### Fonts
+Main font: Fredoka One
 
 ## Wireframes 
 
