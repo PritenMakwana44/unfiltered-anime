@@ -196,9 +196,12 @@ Site Structure:
     7. edit review page (form)
     8. Review detail page
 
+My site used a MVC framework on the backend to put the site front end structure togther via a model, view and controller.
+
 ### Database
 
-Below is my Database model which was designed before putting togther this project. Ideally this would be the schema which would work most ideally. In reality this model didn't work as expected but it provided space for growth. In the future this schema will provide to be useful to make the database as clean as possible. The backend uses Django and ElephantSQL.
+Below is my Database model which was designed before putting togther this project. Ideally this would be the schema which would work most ideally. In reality this model didn't work as expected but it provided space for growth. In the future this schema will provide to be useful to make the database as clean as possible. The backend uses Django and ElephantSQL. 
+My Review model and comment model had similaries to previous projects at Code Institute but I always made sure they were custom to my sites needs. My watchlater model was completey custom and provided much expansion for future updates. 
 
 ![models](readme/images/models.jpeg)
 
@@ -396,9 +399,13 @@ Favicon live:
     + AllAuth
 
 # Testing
+
+Both Automatic ans Manual testing was done throughout this project. I felt doing Unit testing wouldn't be appropriate due to the simple project in place. Due to the lack of complexity I felt my time would be better placed elsewhere. Hence I used my Python Pep8 inbuilt add-on to ensure that my code would is valid. I then used external validators for my other code as will be shown later. I also used manual testing by continously checking what my site looks like on diffrent browsers and devices and making sure all functions work as expected.
+
 ## Functionality and Compatibility Testing
 For functionality testing I tested my website in all diffrent sizes in chrome, firefox and safari.
 My project looked great on all browsers and were responsive on mobile, tablet and desktop. There was room for improvement but the responsiveness was still functional.
+Much testing was done using an Iphone 13 pro, iPad pro and Macbook Pro 13". This ensured I knew what impact my changes were continously making. 
 
 ## Code Validator Testing
 HTML:
@@ -458,6 +465,7 @@ SEO watchlist mobile testing result:
 ## Manual testing
 
 Below are the user stories and the manual testing outcomes for each:
+I did manual testing throughout my project according to my user stories to make sure all requirements were met. These were tracked via Github to make sure all was processed correctly. 
 
 
 1. USER STORY: View Review list:
@@ -465,78 +473,91 @@ Below are the user stories and the manual testing outcomes for each:
     Action: Browse Home page.
     Expected Result: See list of Reviews.
     Actual Result: See list of Reviews.
+    Same result in all browsers: Yes
 
 2. USER STORY: Create Review
 
     Action: Click Add review button and fill out the create review form.
     Expected Result: Successfully create a new review.
     Actual Result: Successfully create a new review.
+    Same result in all browsers: Yes
 
 3. USER STORY: Delete Review
     
     Action: Click on review and click delete button.
     Expected Result: See delete button on own posts, then click delete to remove your own review. Can't see delete button on others posts.
     Actual Result: Can see the delete button and was able to delete own review only. Can't see delete button on others posts.
+    Same result in all browsers: Yes
 
 4. USER STORY: Edit Review
    
     Action: Click on review and click edit button.
     Expected Result: See edit button on own posts, then click edit to edit your own review. Can't see edit button on others posts.
     Actual Result: Can see the edit button and was able to edit own review only. Can't see edit button on others posts.
+    Same result in all browsers: Yes
 
 5. USER STORY: Upvote/downvote review
     
     Action: Click thumbs up icon to upvote and click thumbs down icon to downvote.
     Expected Result: Icon changes colour and number according to which you have picked.
     Actual Result: Icon changes colour and number according to which you have picked.
+    Same result in all browsers: Yes
 
 6. USER STORY: Account Registration
     
     Action: Click Sign up button then enter username and password to sign up.
     Expected Result: Be able to sign up successfully, indicatd by Navbar changing so it shows log out and add review as an option.
     Actual Result: Was able to sign up successfully, indicatd by Navbar changing so it shows log out and add review as an option.
+    Same result in all browsers: Yes
 
 7. USER STORY: Comment On Review
     
     Action: Click on review then leave a comment via the text field and submit button. 
     Expected Result: See your own comment on the review.
     Actual Result: See your own comment on the review.
+    Same result in all browsers: Yes
 
 8. USER STORY: View Comments
     
     Action: Click on a post then scroll to the bottom. 
     Expected Result: See comments
     Actual Result: Can see comments.
+    Same result in all browsers: Yes
 
 9. USER STORY: View upvote/downvotes
    
     Action: Click into post and scroll down to upvote/downvote section.
     Expected Result: See number indicator for upvote/downvotes.
     Actual Result: Can see number indicator for upvote/downvotes.
+    Same result in all browsers: Yes
 
 10. USER STORY: Site pagitnation
     
     Action: Add more then 10 reviews and click next and bottom of page to move to next page.
     Expected Result: Able to switch to next page after 10 reviews.
     Actual Result: Able to switch to next page after 10 reviews.
+    Same result in all browsers: Yes
 
 11. USER STORY: Add review to watch later
    
     Action: Click the add review button
     Expected Result: If not logged in, redirected to the sign in page. If logged in adds the review to your watch later list.
     Actual Result: If not logged in, redirected to the sign in page. If logged in adds the review to your watch later list.
+    Same result in all browsers: Yes
 
 12. USER STORY: Watch later section view
    
     Action: Log in, click watch later in nav bar. 
     Expected Result: See reviews added to watch later page. 
     Actual Result: Can see watch later list
+    Same result in all browsers: Yes
 
 13. USER STORY: Manage Reviews
     
     Action: Login as admin user. Click on posts to edit/delete any review or go to admin panel to do this via the link in nav bar.
     Expected Result: Successfully be able to edit/delete review via website or via admin panel.
     Actual Result: Successfully able to edit/delete review via website or via admin panel.
+    Same result in all browsers: Yes
 
 14. USER STORY: Manage comments
 
@@ -544,12 +565,14 @@ Below are the user stories and the manual testing outcomes for each:
     Action: Login as admin user. Click on posts to edit/delete any comment or go to admin panel to do this via the link in nav bar. Approve comments for other users.
     Expected Result: Successfully be able to delete comments via website or via admin panel. Approve comments or edit comments via admin panel.
     Actual Result: Successfully be able to delete comments via website or via admin panel. Approve comments or edit comments via admin panel.
+    Same result in all browsers: Yes
 
 15. User Story: 404 error
     
     Action: Change the url to have an incorrect path
     Expected Result: Get a 404 error page which allows you to get to to correct site.
     Actual Result: No 404 error page instead I get a default page which has no links to go to correct site.
+    Same result in all browsers: Yes
 
 # Bugs
 ## Fixed Bugs
