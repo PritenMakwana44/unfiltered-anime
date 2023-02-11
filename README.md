@@ -452,57 +452,57 @@ Below are the user stories and the manual testing outcomes for each:
 
 1. USER STORY: View Review list:
 
-    Action:
-    Expected Result:
-    Actual Result:
+    Action: Browse Home page.
+    Expected Result: See list of Reviews.
+    Actual Result: See list of Reviews.
 
 2. USER STORY: Create Review
 
-    Action:
-    Expected Result:
-    Actual Result:
+    Action: Click Add review button and fill out the create review form.
+    Expected Result: Successfully create a new review.
+    Actual Result: Successfully create a new review.
 
 3. USER STORY: Delete Review
     
-    Action:
-    Expected Result:
-    Actual Result:
+    Action: Click on review and click delete button.
+    Expected Result: See delete button on own posts, then click delete to remove your own review. Can't see delete button on others posts.
+    Actual Result: Can see the delete button and was able to delete own review only. Can't see delete button on others posts.
 
 4. USER STORY: Edit Review
    
-    Action:
-    Expected Result:
-    Actual Result:
+    Action: Click on review and click edit button.
+    Expected Result: See edit button on own posts, then click edit to edit your own review. Can't see edit button on others posts.
+    Actual Result: Can see the edit button and was able to edit own review only. Can't see edit button on others posts.
 
 5. USER STORY: Upvote/downvote review
     
-    Action:
-    Expected Result:
-    Actual Result:
+    Action: Click thumbs up icon to upvote and click thumbs down icon to downvote.
+    Expected Result: Icon changes colour and number according to which you have picked.
+    Actual Result: Icon changes colour and number according to which you have picked.
 
 6. USER STORY: Account Registration
     
-    Action:
-    Expected Result:
-    Actual Result:
+    Action: Click Sign up button then enter username and password to sign up.
+    Expected Result: Be able to sign up successfully, indicatd by Navbar changing so it shows log out and add review as an option.
+    Actual Result: Was able to sign up successfully, indicatd by Navbar changing so it shows log out and add review as an option.
 
 7. USER STORY: Comment On Review
     
-    Action:
-    Expected Result:
-    Actual Result:
+    Action: Click on review then leave a comment via the text field and submit button. 
+    Expected Result: See your own comment on the review.
+    Actual Result: See your own comment on the review.
 
 8. USER STORY: View Comments
     
-    Action:
-    Expected Result:
-    Actual Result:
+    Action: Click on a post then scroll to the bottom. 
+    Expected Result: See comments
+    Actual Result: Can see comments.
 
 9. USER STORY: View upvote/downvotes
    
-    Action:
-    Expected Result:
-    Actual Result:
+    Action: Click into post and scroll down to upvote/downvote section.
+    Expected Result: See number indicator for upvote/downvotes.
+    Actual Result: Can see number indicator for upvote/downvotes.
 
 10. USER STORY: Site pagitnation
     
@@ -512,33 +512,34 @@ Below are the user stories and the manual testing outcomes for each:
 
 11. USER STORY: Add review to watch later
    
-    Action:
-    Expected Result:
-    Actual Result:
+    Action: Click the add review button
+    Expected Result: If not logged in, redirected to the sign in page. If logged in adds the review to your watch later list.
+    Actual Result: If not logged in, redirected to the sign in page. If logged in adds the review to your watch later list.
 
 12. USER STORY: Watch later section view
    
-    Action:
-    Expected Result:
-    Actual Result:
+    Action: Log in, click watch later in nav bar. 
+    Expected Result: See reviews added to watch later page. 
+    Actual Result: Can see watch later list
 
 13. USER STORY: Manage Reviews
     
-    Action:
-    Expected Result:
-    Actual Result:
+    Action: Login as admin user. Click on posts to edit/delete any review or go to admin panel to do this via the link in nav bar.
+    Expected Result: Successfully be able to edit/delete review via website or via admin panel.
+    Actual Result: Successfully able to edit/delete review via website or via admin panel.
 
 14. USER STORY: Manage comments
 
-    Action:
-    Expected Result:
-    Actual Result:
+    
+    Action: Login as admin user. Click on posts to edit/delete any comment or go to admin panel to do this via the link in nav bar. Approve comments for other users.
+    Expected Result: Successfully be able to delete comments via website or via admin panel. Approve comments or edit comments via admin panel.
+    Actual Result: Successfully be able to delete comments via website or via admin panel. Approve comments or edit comments via admin panel.
 
 15. User Story: 404 error
     
-    Action:
-    Expected Result:
-    Actual Result:
+    Action: Change the url to have an incorrect path
+    Expected Result: Get a 404 error page which allows you to get to to correct site.
+    Actual Result: No 404 error page instead I get a default page which has no links to go to correct site.
 
 # Bugs
 
@@ -546,7 +547,7 @@ Below are the user stories and the manual testing outcomes for each:
 
 ## Unfixed Bugs
 
-
+draft and publish function
 
 # Deployment
 
