@@ -340,6 +340,16 @@ If an admin is logged in. They get access to a diffrent nav bar with access to t
 Here is where the admin can make any changes they would like within the admin panel.
 ![admin-panel](readme/images/features/admin-center-menu.png)
 
+### Favicon
+Here is the Favicon used:
+Image used:
+
+![favicon-image](static/favicon.ico)
+
+Favicon live:
+
+![favicon-image](readme/images/features/favicon-live.png)
+
 ## Future Features
     1. 404 error pages
     2. Allow admin to approve comments via the Review site itself.
@@ -562,6 +572,8 @@ Before:
 After:
 
 ![comment-alert-big-code-fixed](readme/images/bugs/comment-alert-code-fixed.png)
+
+
 ![comment-alert-fixed-bug](readme/images/bugs/comment-alert-fixed.png)
 
 3. Delete Review button spacing bug
@@ -704,8 +716,27 @@ In your settings.py turn off debugging.
 3. Icons were taken from Font Awesone: [Font Awesome](https://fontawesome.com/)
 4. Inspiration for structures, models, views and URLS were taken from the "I think therefore I Blog" project walkthrough: [I think there I blog Walkthrogh](https://github.com/Code-Institute-Solutions/Django3blog/tree/master/11_messages)
 5. Much of Project help was taken from Django Central such as issues linking URL, Models and views: [Django Central Articles](https://djangocentral.com/articles/)
-6. 
-
+6. For General help through out my project teh offical Django documentation was great help: [Django](https://docs.djangoproject.com/)
+7. Bootstrap was used for design and structure of UI: [Bootstrap](https://getbootstrap.com/)
+8. Button design was fro I used "Buy me a coffee": [Copy & Paste CSS] (https://copy-paste-css.com/)
+9. Placeholder images are taken from: [Pixabay](https://pixabay.com/)
+10. Deployment was on Heroku: [Heroku](https://heroku.com/)
+11. Static media storage: [Cloudinary](https://cloudinary.com/)
+12. Database: [ElephantSQL](https://elephantsql.com)
+13. HTML template used for Blog: [Clean Blog](https://startbootstrap.com/theme/clean-blog)
+14. Extended text fields for Bootstrap: [Summernote](https://summernote.org/)
+15. Django Authentication source: [Django-allauth](https://django-allauth.readthedocs.io/en/latest/)
+16. Django general help: [Mozilla Developers](https://developer.mozilla.org/)
+17. Wireframe: [Balsamiq](https://balsamiq.com/)
+18. Models diagram: [LucidChart](https://www.lucidchart.com/)
+19. Favicon Generator: [Favicon Generator](https://favicon.io/favicon-converter/)
+20. General help taken for HTML, CSS, JS, Python and django: [W3schools](https://www.w3schools.com/)
+21. General project help was also taken from Reddit: [Reddit](https://www.reddit.com/)
+22. General project help was also taken from Stackoverflow: [StackOverflow](https://stackoverflow.com/)
+23. Help with watch list article: [Article for Watchlist 1](https://stackoverflow.com/questions/63403309/watchlist-system-on-django) , [Article for Watchlist 2](https://forum.djangoproject.com/t/adding-watchlist-watchlist-not-displaying-added-items/12411)
 
 
 # Acknowledgements
+1. Much help was taken from Tutors at Code Institute.
+2. Much help and inspirtation was taken from Code Insitute course materials.
+3. Much help was taken from Code Institute Slack channels. 
