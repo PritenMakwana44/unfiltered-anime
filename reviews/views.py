@@ -38,6 +38,7 @@ class AddReview(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     def form_valid(self, form):
         print('USER: ', self.request.user)
         form.instance.username = self.request.user
+        messages.success(request, "Review added successfully.")
         return super().form_valid(form)
 
 
@@ -249,6 +250,7 @@ def add_to_watch_later(request, review_id):
         watch_later.review_id = Review.objects.get(review_id=review_id)
         watch_later.username = request.user
         watch_later.save()
+        messages.success(request, "Added to Watch later")
         return redirect('home')
     else:
         messages.success(request, "Please login!")
