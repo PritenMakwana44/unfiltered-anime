@@ -40,6 +40,7 @@
     + [Comments as an admin](#comments-as-an-admin)
     + [Comment approval](#comment-approval)
     + [Footer](#footer)
+    + [Back to top](#back-to-top)
     + [Login as admim](#login-as-admin)
     + [Admin center](#admin-center)
 + [Future Features](#future-features)
@@ -332,6 +333,10 @@ Here is where the admin can approve comments. This is in the admin panel.
 ### Footer
 The footer has been kept basic just my trademark as for who created the site.
 ![footer](readme/images/features/footer.png)
+
+### Back to Top
+Here is my back to top button which is displayed on all pages
+![back to top](readme/images/features/back-to-top.png)
 
 
 ### Login as admin
@@ -633,6 +638,9 @@ Potential fix: Would need more research.
 4. Issue: No 404 error page
 Potential fix: Add 404 error page and add to URL.py.
 
+5. Issue: Back to top button displayed on all pages including signup, signin and sign out. 
+Potential fix: Needs more research
+
 # Deployment
 
 ## Deployment of Project:
@@ -757,6 +765,7 @@ In your settings.py turn off debugging.
 21. General project help was also taken from Reddit: [Reddit](https://www.reddit.com/)
 22. General project help was also taken from Stackoverflow: [StackOverflow](https://stackoverflow.com/)
 23. Help with watch list article: [Article for Watchlist 1](https://stackoverflow.com/questions/63403309/watchlist-system-on-django) , [Article for Watchlist 2](https://forum.djangoproject.com/t/adding-watchlist-watchlist-not-displaying-added-items/12411)
+24. Top of page button: [Top of page button](https://www.w3schools.com/howto/howto_js_scroll_to_top.asp)
 
 
 # Acknowledgements
