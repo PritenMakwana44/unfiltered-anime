@@ -429,7 +429,7 @@ I used the following CSS validator to validate my project. It was validated via:
 Jshint:
 
 
-I used the following JS validator to validate my project. It was validated via: https://jshint.com/
+I used the following JS validator to validate my project.Although I got an error with the semicolon, there was no valid reason why a semicolon was needed hence I belive this to be a bug. It was validated via: https://jshint.com/
 ![jshint-val](readme/images/testing/jshint-val.png)
 
 Python:
