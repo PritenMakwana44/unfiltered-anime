@@ -38,7 +38,7 @@ class AddReview(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     def form_valid(self, form):
         print('USER: ', self.request.user)
         form.instance.username = self.request.user
-        messages.success(request, "Review added successfully.")
+        messages.success(self.request, "Review added successfully.")
         return super().form_valid(form)
 
 

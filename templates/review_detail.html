@@ -19,9 +19,9 @@
                 <!-- The featured image URL goes in the src attribute -->
                 {% if "placeholder" in review.featured_image.url %}
                 {% load static %}
-                <img src="{% static 'default.jpg' %}" width="100%">
+                <img src="{% static 'default.jpg' %}" alt="default static image" width="100%">
                 {% else %}
-                <img src=" {{ review.featured_image.url }}" width="100%">
+                <img src=" {{ review.featured_image.url }}" alt="Featured image" style="width:100%;">
                 {% endif %}
             </div>
         </div>
@@ -36,7 +36,6 @@
             <h4>Description:</h4>
             <p class="card-text ">
                 {{ review.description | safe }}
-            </p>
             <h4>Type:</h4>
             <p class="card-text ">
                 {{ review.type | safe }}
@@ -50,7 +49,7 @@
             <h4>Review:</h4>
             <p class="card-text ">
                 {{ review.review | safe }}
-            </p>
+            
             <br>
             <h4>Favourite Character:</h4>
             <p class="card-text ">
@@ -115,7 +114,6 @@
         </div>
     </div>
 </div>
-</div>
 <div class="row">
     <div class="col">
         <hr>
@@ -174,7 +172,6 @@
 
         </div>
     </div>
-</div>
 </div>
 
 {% endblock content %}
